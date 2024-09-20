@@ -8,16 +8,31 @@
         flexWrap: 'wrap',
         justifyContent: 'center',
         top: '0',
-        padding: '20px 0px',
+        padding: '26px 0',
         width: '100%',
         zIndex: '10',
-        backgroundColor: isScrolled ? '#faebd7' : 'blue',
-        transition:
-          'background-color 0.3s ease-in-out, color 0.3s ease-in-out',
+        // backgroundColor: isScrolled ? '#faebd7' : 'blue',
+        // transition:
+        //   'background-color 0.3s ease-in-out, color 0.3s ease-in-out',
+        backgroundImage: 'url(\'/img/Designer.png\')',
+        backgroundPosition: 'center',
         paddingLeft: '1rem',
         fontWeight: '500',
       }"
     >
+    <!-- Header Overlay -->
+    <div
+      :style="{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backdropFilter: 'blur(4px)',
+        backgroundColor: 'rgba(0, 0, 0, 0.55)',
+        zIndex: -1
+      }"
+    ></div>
       <div
         class="d-flex align-items-center mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
         :style="{ color: isScrolled ? '#faebd7' : '#C20024' }"
@@ -26,7 +41,7 @@
           xmlns="http://www.w3.org/2000/svg"
           width="40"
           height="40"
-          :fill="isScrolled ? '#C20024' : 'antiquewhite'"
+          :fill="isScrolled ? '#0dcaf0' : 'antiquewhite'"
           class="bi bi-journal-code ml-1"
           viewBox="0 0 16 16"
         >
@@ -39,7 +54,7 @@
         </svg>
         <span
           class="fs-4 head-title mx-2"
-          :style="{ color: isScrolled ? '#C20024' : 'antiquewhite' }"
+          :style="{ color: isScrolled ? '#0dcaf0' : 'antiquewhite' }"
         >
           Meister
         </span>

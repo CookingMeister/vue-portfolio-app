@@ -34,7 +34,7 @@ export default {
     const route = useRoute();
 
     const linkStyle = computed(() => ({
-      color: props.isScrolled ? 'blue' : 'antiquewhite',
+      color: props.isScrolled ? '#0dcaf0' : 'antiquewhite',
     }));
 
     const activeStyle = {

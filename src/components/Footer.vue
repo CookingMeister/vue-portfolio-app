@@ -10,7 +10,7 @@
       height: '24vh',
       backgroundImage: 'url(\'/img/Designer.png\')',
       backgroundPosition: 'center',
-      fontSize: '80%',
+      fontSize: '85%',
       position: 'relative',
       zIndex: 1
     }"

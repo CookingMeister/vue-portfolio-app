@@ -13,6 +13,7 @@ body {
     border: solid 6px antiquewhite;
     object-fit: cover;
     aspect-ratio: 1 / 1;
+    z-index: 100;
   }
   
   .profile-sm {
@@ -26,6 +27,14 @@ body {
   .social i {
     color: antiquewhite;
   }
+  
+  .btn {
+    z-index: 100;
+  }
+  .card {
+    z-index: 200;
+  }
+
 
   .btn:hover {
     transform: scale(1.03);

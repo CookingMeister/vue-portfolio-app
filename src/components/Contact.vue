@@ -20,7 +20,7 @@
           textShadow: '1px 1px 3px black',
         }"
       >
-        Contact Me
+        Contact
       </h3>
 
       <div
@@ -30,11 +30,13 @@
 
       <!-- Vue Transition -->
       <transition name="fade" appear>
+       
         <form
           class="row gy-2 gx-4 align-items-center justify-content-center mx-auto w-100 d-block my-1"
           @submit.prevent="handleSubmit"
         >
-          <div class="col-md-12 col-lg-6 mx-auto pb-3">
+        <p class="lead text-center mb-4">Fill out this form to send me a message.</p>
+          <div class="col-md-12 col-lg-6 mx-auto pb-3 mt-5">
             <label for="name" class="form-label mx-1">Name</label>
             <input
               :style="{ borderRadius: '3px', backgroundColor: 'antiquewhite' }"
@@ -148,7 +150,7 @@ export default {
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 1.9s ease;
+  transition: opacity 1.8s ease;
 }
 
 .fade-enter-from,

@@ -1,14 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AboutView from '../views/AboutView.vue'
-import ResumeSection from '../components/Resume.vue'
-import ContactForm from '../components/Contact.vue'
-import ErrorPage from '../components/Error.vue'
 
 const routes = [
   {
     path: '/',
     name: 'About',
-    component: AboutView   
+    component: AboutView
   },
   {
     path: '/portfolio',
@@ -21,17 +18,20 @@ const routes = [
   {
     path: '/resume',
     name: 'Resume',
-    component: ResumeSection
+    // this generates a separate chunk (Resume.[hash].js) for this route
+    component: () => import('../views/ResumeView.vue')
   },
   {
     path: '/contact',
     name: 'Contact',
-    component: ContactForm
+    // this generates a separate chunk (Contact.[hash].js) for this route
+    component: () => import('../views/ContactView.vue')
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'Error',
-    component: ErrorPage
+    // this generates a separate chunk (Error.[hash].js) for this route
+    component: () => import('../views/ErrorView.vue')
   }
 ]
 

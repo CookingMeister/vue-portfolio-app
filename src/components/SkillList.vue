@@ -1,8 +1,8 @@
 <template>
   <div class="col-md-6 mb-4">
     <div
-      class="card text-center text-light bg-dark border-0 shadow-lg h-100"
-      :style="{ transition: 'transform 0.3s ease-in-out' }"
+      class="card text-center text-light border-0 shadow-lg h-100"
+      :style="{ transition: 'transform 0.3s ease-in-out', background: 'linear-gradient(45deg, #333, #222)' }"
     >
       <div class="card-body">
         <h5 class="card-title text-info">{{ title }}</h5>

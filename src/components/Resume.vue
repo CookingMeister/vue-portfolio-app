@@ -75,13 +75,14 @@ export default defineComponent({
       {
         title: 'Libraries & Frameworks',
         skills: [
-          'Vue',
-          'Vue Router',
+          'Vue + Vue Router',
+          'React + React Router',
           'Node',
           'Express',
           'Spring Boot',
           'Apollo Server',
           'Bootstrap',
+          'Tailwind',
         ],
       },
       {
@@ -98,7 +99,7 @@ export default defineComponent({
       },
       {
         title: 'Languages',
-        skills: ['Java', 'JavaScript (ES6+)', 'HTML', 'CSS'],
+        skills: ['JavaScript (ES6+)', 'Java', 'PHP', 'HTML + CSS'],
       },
       {
         title: 'Databases',
@@ -117,7 +118,7 @@ export default defineComponent({
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 2.1s ease;
+  transition: opacity 1.9s ease;
 }
 
 .fade-enter-from,

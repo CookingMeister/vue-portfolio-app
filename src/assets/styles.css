@@ -27,12 +27,12 @@ body {
   .social i {
     color: antiquewhite;
   }
-  
+
   .btn {
     z-index: 100;
   }
   .card {
-    z-index: 200;
+    z-index: 5;
   }
 
 

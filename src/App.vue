@@ -1,20 +1,23 @@
 <template>
-  <router-view></router-view>
+  <div id="app">
+    <HeaderComponent />
+    <main class="mt-4">
+      <router-view></router-view>
+    </main>
+    <FooterComponent />
+  </div>
 </template>
 
-<script>
-// import { createApp } from 'vue'
-// import { createRouter, createWebHistory } from 'vue-router'
-// import App from './components/App.vue'
+<script >
+import { defineComponent } from 'vue'
+import HeaderComponent from './components/Header.vue'
+import FooterComponent from './components/Footer.vue'
 
-// const router = createRouter({
-//   history: createWebHistory(),
-//   routes: [
-//     { path: '/', component: App }
-//   ]
-// })
-
-// const app = createApp(App)
-// app.use(router)
-// app.mount('#app')
+export default defineComponent({
+  name: 'App',
+  components: {
+    HeaderComponent,
+    FooterComponent
+  }
+})
 </script>

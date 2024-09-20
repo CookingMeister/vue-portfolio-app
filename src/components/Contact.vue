@@ -6,7 +6,8 @@
       backgroundImage:
         'linear-gradient(45deg, rgb(30, 6, 245), rgba(0, 110, 255, 0.777))',
       paddingTop: '20vh',
-      paddingBottom: '10vh',
+      paddingBottom: '8vh',
+      minHeight: '100vh',
       color: 'antiquewhite',
       borderRadius: '2px',
     }"

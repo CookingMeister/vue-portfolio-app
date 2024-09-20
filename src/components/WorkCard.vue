@@ -1,13 +1,13 @@
 <template>
   <div class="col">
     <div
-      class="bg-image card rounded-4 shadow-lg"
+      class="bg-image card rounded-4 shadow hover-scale"
       :style="cardStyle"
       :alt="alt"
       @mouseover="handleMouseOver"
       @mouseout="handleMouseOut"
     >
-      <Icon class="rounded-circle border border-white m-2 profile-sm" />
+      <ProfileIcon class="rounded-circle border border-light m-2 profile-sm" />
 
       <!-- Overlay div -->
       <div class="rounded-4" :style="overlayStyles">
@@ -24,7 +24,7 @@
             <i class="fab fa-github fa-2x mx-3"></i>
           </a>
         </div>
-        <Icon class="rounded-circle m-2 profile-sm" />
+        <ProfileIcon class="rounded-circle border border-light m-2 profile-sm" />
       </div>
       <!-- End of Overlay -->
     </div>
@@ -33,12 +33,12 @@
 
 <script>
 import { ref, computed } from 'vue';
-import Icon from './Icon.vue';
+import ProfileIcon from './Icon.vue';
 
 export default {
   name: 'WorkCard',
   components: {
-    Icon,
+    ProfileIcon,
   },
   props: {
     image: String,
@@ -100,3 +100,13 @@ export default {
   },
 };
 </script>
+<style scoped>
+.hover-scale {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.1);
+  /* box-shadow: none !important; */
+}
+</style>

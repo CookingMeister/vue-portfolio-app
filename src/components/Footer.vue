@@ -12,7 +12,7 @@
       backgroundPosition: 'center',
       fontSize: '80%',
       position: 'relative',
-      zIndex: 1,
+      zIndex: 1
     }"
   >
     <div
@@ -24,10 +24,10 @@
         bottom: 0,
         backdropFilter: 'blur(4px)',
         backgroundColor: 'rgba(0, 0, 0, 0.55)',
-        zIndex: -1,
+        zIndex: -1
       }"
     ></div>
-    <div class="container footer text-white">
+    <div class="container text-light">
       <footer>
         <div
           class="social d-flex justify-content-center align-items-center"
@@ -35,14 +35,14 @@
           @mouseout="onMouseOut"
         >
           <a href="https://github.com/CookingMeister?tab=repositories">
-            <i class="fab fa-github px-3 py-4"></i>
+            <i class="fab fa-github fa-2x px-3 py-4"></i>
           </a>
           <a
             href="https://www.linkedin.com/in/shawn-meister/"
             @mouseover="onMouseOver"
             @mouseout="onMouseOut"
           >
-            <i class="fab fa-linkedin px-3 py-4"></i>
+            <i class="fab fa-linkedin fa-2x px-3 py-4"></i>
           </a>
         </div>
         <span>© {{ currentYear }} Meister</span>
@@ -57,16 +57,16 @@ export default {
   name: 'FooterComponent',
   data() {
     return {
-      currentYear: new Date().getFullYear(),
-    };
+      currentYear: new Date().getFullYear()
+    }
   },
   methods: {
     onMouseOver(event) {
-      event.target.style.color = '#0dcaf0';
+      event.target.style.color = '#0dcaf0'
     },
     onMouseOut(event) {
-      event.target.style.color = 'white';
-    },
-  },
-};
+      event.target.style.color = 'antiquewhite'
+    }
+  }
+}
 </script>

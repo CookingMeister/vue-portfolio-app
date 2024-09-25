@@ -1,7 +1,7 @@
-<script setup>
-import About from '@/components/About.vue';
-</script>
-
 <template>
   <About />
 </template>
+
+<script setup>
+import About from '@/components/AboutSection.vue';
+</script>

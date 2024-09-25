@@ -1,14 +1,11 @@
 <template>
-  <section
-    id="About"
-    :style="{
-      fontFamily: 'Roboto, sans-serif',
-      backgroundImage: 'linear-gradient(45deg, rgb(30, 6, 245), rgba(0, 110, 255, 0.777))',
-      paddingTop: '5vh',
-      paddingBottom: '5vh',
-      minHeight: '90vh'
-    }"
-  >
+  <section id="About" :style="{
+    fontFamily: 'Roboto, sans-serif',
+    backgroundImage: 'linear-gradient(45deg, rgb(30, 6, 245), rgba(0, 110, 255, 0.777))',
+    paddingTop: '5vh',
+    paddingBottom: '5vh',
+    minHeight: '90vh'
+  }">
     <div class="container">
       <div class="px-2 pt-5 mt-5 text-center">
         <!-- Vue Transitions -->
@@ -30,28 +27,14 @@
             </p>
           </Transition>
           <div class="d-flex justify-content-center align-items-center my-5">
-            <img
-              src="/img/profile.png"
-              class="profile-pic img-fluid rounded-circle"
-              alt="Sunny summer day profile of young man smiling outside."
-              width="250"
-              height="250"
-              loading="lazy"
-            />
+            <img src="/img/profile.png" class="profile-pic img-fluid rounded-circle"
+              alt="Sunny summer day profile of young man smiling outside." width="250" height="250" loading="lazy" />
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
-
-<script>
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'AboutComponent'
-})
-</script>
 
 <style scoped>
 .fade-down-enter-active,

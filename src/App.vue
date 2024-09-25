@@ -9,18 +9,9 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-import HeaderComponent from './components/Header.vue'
-import FooterComponent from './components/Footer.vue'
-
-export default defineComponent({
-  name: 'App',
-  components: {
-    HeaderComponent,
-    FooterComponent
-  }
-})
+<script setup>
+import HeaderComponent from './components/HeaderComponent.vue'
+import FooterComponent from './components/FooterComponent.vue'
 </script>
 
 <style scoped>
@@ -34,9 +25,9 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
-    linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;

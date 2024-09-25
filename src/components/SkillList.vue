@@ -16,12 +16,9 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'SkillList',
-  props: {
-    title: String,
-    skills: Array
-  }
-}
+<script setup>
+defineProps({
+  title: String,
+  skills: Array
+})
 </script>

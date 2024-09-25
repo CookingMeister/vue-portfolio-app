@@ -34,7 +34,7 @@ import WorkCard from './WorkCard.vue';
 const styles = ref({
   fontFamily: 'Roboto, sans-serif',
   backgroundImage:
-    'linear-gradient(45deg, rgb(30, 6, 245), rgba(0, 110, 255, 0.777))',
+    'linear-gradient(135deg, rgb(30, 6, 245), rgba(0, 110, 255, 0.87))',
   paddingTop: '20vh',
   paddingBottom: '14vh',
 });

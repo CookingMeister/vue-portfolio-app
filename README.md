@@ -1,10 +1,16 @@
-# vue-project-app
+# vue-portfolio-app
 
-This template should help get you started developing with Vue 3 in Vite.
+[![badge](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/mit)
 
-## Recommended IDE Setup
+This is a Vue.js-based portfolio application showcasing my skills, projects, and resume. It features a modern, responsive design with smooth transitions and interactive elements.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
+
+- Interactive portfolio section with links to repos and deployed apps
+- Resume section with downloadable PDF
+- Skill categories display
+- Dynamic header, footer with social media links
+- Responsive design for various screen sizes
 
 ## Customize configuration
 
@@ -39,3 +45,20 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+### Technologies Used
+
+- Vue.js 3
+- Vite
+- Vitest for unit testing
+- ESLint for code linting
+
+### Contributing
+
+Contributions, issues, and feature requests are welcome. Feel free to open a Pull Request if you want to contribute.
+
+### License
+
+[![badge](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/mit)
+
+This project is licensed under the [MIT License](LICENSE).

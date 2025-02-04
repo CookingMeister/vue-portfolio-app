@@ -46,12 +46,52 @@ npm run test:unit
 npm run lint
 ```
 
+### Docker Deployment (Optional)
+
+#### Build Docker Image
+
+```sh
+docker build -t vue-portfolio-app .
+```
+
+#### Run Docker Container
+
+```sh
+docker run -d -p 5173:80 vue-portfolio-app
+```
+
+- Access the app at http://localhost:5173
+
+### Docker Compose Deployment
+
+#### Start the app using Docker Compose
+
+```sh
+docker-compose up -d
+```
+
+#### Stop the app
+
+```sh
+docker-compose down
+```
+
+#### Scale the app if needed
+
+```sh
+docker-compose up -d --scale app=3
+```
+
+- Access the app at http://localhost:5173
+
 ### Technologies Used
 
 - Vue.js 3
 - Vite
 - Vitest for unit testing
 - ESLint for code linting
+- Docker for containerization
+- Docker Compose for orchestration
 
 ### Contributing
 

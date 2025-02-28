@@ -1,18 +1,17 @@
 <template>
   <section id="Contact" :style="{
     fontFamily: 'Roboto, sans-serif',
-    backgroundImage:
-      'linear-gradient(135deg, rgb(30, 6, 245), rgba(0, 110, 255, 0.87))',
+    backgroundImage: 'linear-gradient(135deg, rgb(30, 6, 245), rgba(0, 110, 255, 0.87))',
     paddingTop: '20vh',
     paddingBottom: '8vh',
     minHeight: '100vh',
     color: 'antiquewhite',
-    borderRadius: '2px',
+    borderRadius: '2px'
   }">
     <div class="container px-4">
       <h3 class="fs-2" :style="{
         marginBottom: '2.5rem',
-        textShadow: '1px 1px 3px black',
+        textShadow: '1px 1px 3px black'
       }">
         Contact
       </h3>
@@ -21,7 +20,6 @@
 
       <!-- Vue Transition -->
       <transition name="fade" appear>
-
         <form class="row gy-2 gx-4 align-items-center justify-content-center mx-auto w-100 d-block my-1"
           @submit.prevent="handleSubmit">
           <p class="lead text-center mb-4">Fill out this form to send me a message.</p>
@@ -38,7 +36,7 @@
             <p v-if="emailError" :style="{
               textShadow: '1px 1px 2px black',
               color: '#15f5ba',
-              letterSpacing: '1px',
+              letterSpacing: '1px'
             }" class="text-center mt-3">
               <em>{{ emailError }}</em>
             </p>
@@ -48,15 +46,25 @@
             <textarea :style="{ borderRadius: '3px', backgroundColor: 'antiquewhite' }" class="form-control"
               id="message" rows="5" placeholder="Enter your message" v-model="message" required></textarea>
 
-            <div class="d-flex justify-content-end">
-              <button type="submit" class="btn btn-dark my-4" :style="{
+            <div class="d-flex flex-column align-items-end">
+              <button type="submit" class="btn btn-dark my-4" :disabled="isSubmitting" :style="{
                 width: '25%',
                 border: '1px solid antiquewhite',
                 borderRadius: '50px',
-                transition: 'all 0.3s',
+                transition: 'all 0.3s'
               }">
-                Submit
+                {{ isSubmitting ? 'Sending...' : 'Submit' }}
               </button>
+
+              <!-- Submission status message -->
+              <p v-if="submitStatus" :style="{
+                textShadow: '1px 1px 2px black',
+                color: submitStatus.success ? '#15f5ba' : '#ff6b6b',
+                letterSpacing: '1px',
+                marginTop: '1rem'
+              }" class="text-center">
+                <em>{{ submitStatus.message }}</em>
+              </p>
             </div>
           </div>
         </form>
@@ -66,32 +74,90 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch } from 'vue'
 
-const name = ref('');
-const email = ref('');
-const message = ref('');
-const emailError = ref('');
+const name = ref('')
+const email = ref('')
+const message = ref('')
+const emailError = ref('')
+const isSubmitting = ref(false)
+const submitStatus = ref(null)
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// API URL for email backend                                ***CHANGE THIS URL FOR PRODUCTION***
+const API_URL = 'http://localhost:3001/api/send-email'
+//                                                         ************************************
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 watch(email, (newEmail) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(newEmail)) {
-    emailError.value = 'Please enter a valid email address.';
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (newEmail && !emailRegex.test(newEmail)) {
+    emailError.value = 'Please enter a valid email address.'
   } else {
-    emailError.value = '';
+    emailError.value = ''
   }
-});
+})
 
-const handleSubmit = () => {
-  if (emailError.value === '') {
-    console.log('Name:', name.value);
-    console.log('Email:', email.value);
-    console.log('Message:', message.value);
-    name.value = '';
-    email.value = '';
-    message.value = '';
+const handleSubmit = async () => {
+  // Only proceed if email is valid
+  if (emailError.value !== '') {
+    return
   }
-};
+
+  // Show loading state
+  isSubmitting.value = true
+  submitStatus.value = null
+
+  try {
+    // Send data to your backend API
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name.value,
+        email: email.value,
+        message: message.value
+      })
+    })
+
+    const data = await response.json()
+
+    if (response.ok) {
+      // Success case
+      submitStatus.value = {
+        success: true,
+        message: 'Your message has been sent successfully!'
+      }
+
+      // Clear form fields
+      name.value = ''
+      email.value = ''
+      message.value = ''
+
+      // Clear success message after 5 seconds
+      setTimeout(() => {
+        submitStatus.value = null
+      }, 5000)
+    } else {
+      // Error from server
+      submitStatus.value = {
+        success: false,
+        message: data.message || 'Failed to send message. Please try again.'
+      }
+    }
+  } catch (error) {
+    console.error('Error sending form:', error)
+    submitStatus.value = {
+      success: false,
+      message: 'Network error. Please check your connection and try again.'
+    }
+  } finally {
+    // Reset loading state
+    isSubmitting.value = false
+  }
+}
 </script>
 
 <style scoped>

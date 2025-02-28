@@ -9,7 +9,7 @@
       </h2>
       <div class="border-top border-light my-3" style="opacity: 0.6"></div>
 
-      <div class="row row-cols-sm-1 row-cols-md-2 row-cols-xl-3 align-items-stretch g-5 py-5">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 align-items-stretch g-5 py-5">
         <transition-group name="fade" appear>
           <WorkCard
             v-for="(card, index) in workCards"

@@ -2,7 +2,7 @@
   <div id="app">
     <HeaderComponent />
     <main class="mt-2">
-      <div class="background-overlay"></div>
+      <!-- <div class="background-overlay"></div> -->
       <router-view></router-view>
     </main>
     <FooterComponent />
@@ -19,7 +19,7 @@ main {
   position: relative;
 }
 
-.background-overlay {
+/* .background-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -33,5 +33,5 @@ main {
   z-index: 0;
   mask-image: linear-gradient(170deg, transparent 40%, black);
   -webkit-mask-image: linear-gradient(170deg, transparent 40%, black);
-}
+} */
 </style>

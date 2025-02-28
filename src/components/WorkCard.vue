@@ -1,6 +1,6 @@
 <template>
   <div class="col">
-    <div class="bg-image card rounded-4 shadow hover-scale" :style="cardStyle" :alt="alt" @mouseover="handleMouseOver"
+    <div class="bg-image card rounded-4 card-shadow hover-scale" :style="cardStyle" :alt="alt" @mouseover="handleMouseOver"
       @mouseout="handleMouseOut">
       <ProfileIcon class="rounded-circle border border-light m-2 profile-sm" />
 
@@ -84,5 +84,8 @@ const overlayStyles = computed(() => ({
 
 .hover-scale:hover {
   transform: scale(1.1);
+}
+.card-shadow {
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
 }
 </style>

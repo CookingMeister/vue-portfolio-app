@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-6 mb-4">
     <div
-      class="card text-center text-light border-0 shadow-lg h-100"
+      class="card text-center text-light border-0 card-shadow h-100"
       :style="{ transition: 'transform 0.3s ease-in-out', background: 'linear-gradient(135deg, #222, #333)' }"
     >
       <div class="card-body">
@@ -22,3 +22,8 @@ defineProps({
   skills: Array
 })
 </script>
+<style scoped>
+.card-shadow {
+  box-shadow: 0 18px 50px -12px rgba(0, 0, 0, 0.65);
+}
+</style>

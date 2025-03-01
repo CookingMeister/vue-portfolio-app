@@ -82,7 +82,9 @@ ${message}
 })
 
 // Start server
-const PORT = process.env.PORT || 3001
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
+const PORT = process.env.PORT || 3001;
+const HOST = process.env.HOST || '0.0.0.0';
+
+app.listen(PORT, HOST, () => {
+  console.log(`Email server running on http://${HOST}:${PORT}`);
+});

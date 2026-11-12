@@ -8,6 +8,7 @@ export const site = {
   brand: 'fullstackchef',
   domain: 'fullstackchef.dev',
   url: 'https://fullstackchef.dev',
+  repo: 'https://github.com/CookingMeister/vue-portfolio-app',
   role: 'Full-Stack Developer',
   tagline: 'Full-stack developer, former head chef',
   location: 'Fredericton, New Brunswick',
@@ -86,6 +87,8 @@ export const projects = [
       'Professional Corporation and Parsons & Cummings. They run on an IIS 10 server at the ' +
       'client, and each also carries matching configuration for Azure Static Web Apps.',
     tags: ['HTML', 'Tailwind CSS', 'JavaScript', 'IIS 10', 'Azure'],
+    image: '/img/polymathic.webp',
+    alt: 'Polymathic Group home page with a navy hero and a general ledger illustration',
     featured: true,
     closedSource: true,
     // http for now: the client's server gets its certificates shortly. Switch these
@@ -129,6 +132,8 @@ export const projects = [
       'Text and image chat client for the OpenAI API. A Vue 3 front end talks to an Express ' +
       'backend that keeps the API key server-side and handles image uploads.',
     tags: ['Vue 3', 'Vite', 'Express', 'OpenAI API'],
+    image: '/img/openai-chat.webp',
+    alt: 'Dark-themed chat interface showing a conversation about C++ with a model selector and message box',
     // No demo: the app needs an OpenAI API key, so there is nothing to host publicly.
     links: [{ type: 'github', url: 'https://github.com/CookingMeister/openai-vue-app' }]
   },

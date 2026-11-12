@@ -14,11 +14,12 @@
       />
       <!-- The lock tracks closed-source status, not a missing screenshot. -->
       <div v-else class="work-card__banner" aria-hidden="true">
-        <AppIcon :name="links.length ? 'journalCode' : 'lock'" size="1.25rem" />
+        <AppIcon :name="links.length || sourcePlanned ? 'journalCode' : 'lock'" size="1.25rem" />
       </div>
 
       <div class="work-card__body">
         <h3 class="work-card__title h5">{{ title }}</h3>
+        <p v-if="status" class="chip work-card__status">{{ status }}</p>
         <p class="work-card__desc">{{ description }}</p>
 
         <ul v-if="tags?.length" class="work-card__tags list-unstyled">
@@ -40,8 +41,8 @@
           </a>
         </div>
         <p v-else class="work-card__closed">
-          <AppIcon name="lock" />
-          <span>Closed source</span>
+          <AppIcon :name="sourcePlanned ? 'journalCode' : 'lock'" />
+          <span>{{ sourcePlanned ? 'Sample source planned' : 'Closed source' }}</span>
         </p>
       </div>
     </div>
@@ -58,30 +59,22 @@ defineProps({
   image: { type: String, default: '' },
   alt: { type: String, default: '' },
   tags: { type: Array, default: () => [] },
-  /** Each entry is `{ type: 'github' | 'demo' | 'site', url, label? }`. Empty means closed source. */
+  status: { type: String, default: '' },
+  sourcePlanned: { type: Boolean, default: false },
+  /** Each entry is `{ type: 'github' | 'demo' | 'site', url, label? }`. */
   links: { type: Array, default: () => [] }
 })
 </script>
 
 <style scoped>
-/*
- * Elevation changes on hover, but the card does not move: it is not itself a
- * link - only its links, such as "Live demo" and "Source", are - so a lift would promise
- * an affordance it does not have.
- */
+/* Static terminal plates: only the actual links respond to interaction. */
 .work-card {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: var(--surface-card);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  transition: box-shadow var(--dur-base) var(--ease);
-}
-
-.work-card:hover,
-.work-card:focus-within {
-  box-shadow: var(--shadow-hover);
+  background: var(--c-plate);
+  border: 1px solid rgba(255, 179, 71, 0.38);
+  border-radius: var(--radius-key);
 }
 
 .work-card__media {
@@ -129,6 +122,11 @@ defineProps({
 .work-card__title {
   margin: 0;
   color: var(--c-accent);
+}
+
+.work-card__status {
+  align-self: flex-start;
+  margin: 0;
 }
 
 .work-card__desc {

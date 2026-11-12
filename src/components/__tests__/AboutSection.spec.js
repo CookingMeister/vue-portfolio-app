@@ -27,14 +27,14 @@ describe('AboutSection', () => {
     expect(img.attributes('alt')).toBe(about.portrait.alt)
   })
 
-  it('keeps heading before portrait before copy in the DOM', () => {
+  it('keeps intro, portrait, copy, and highlights in reading order', () => {
     // Grid areas, not reordering: source order stays the reading and tab order.
     const wrapper = mountAbout()
     const order = wrapper
-      .findAll('.about__intro, .about__portrait, .about__copy')
+      .findAll('.about__intro, .about__portrait, .about__copy, .about__highlights')
       .map((el) => el.classes().find((c) => c.startsWith('about__')))
 
-    expect(order).toEqual(['about__intro', 'about__portrait', 'about__copy'])
+    expect(order).toEqual(['about__intro', 'about__portrait', 'about__copy', 'about__highlights'])
   })
 
   it('does not lazy-load the portrait, which is above the fold', () => {
@@ -45,11 +45,27 @@ describe('AboutSection', () => {
     expect(img.attributes('fetchpriority')).toBe('high')
   })
 
-  it('shows location and domain, and links onward to work and contact', () => {
+  it('shows the path, tagline, location, and career highlights', () => {
     const wrapper = mountAbout()
 
+    expect(wrapper.text()).toContain('~/about')
+    expect(wrapper.text()).toContain(about.subheading)
     expect(wrapper.text()).toContain(site.location)
-    expect(wrapper.text()).toContain(site.domain)
+    expect(wrapper.find('.about__meta').text()).toBe(site.location)
+    expect(wrapper.findAll('.about__highlight-list li')).toHaveLength(about.highlights.length)
+  })
+
+  it('uses the shared block cursor beside the full tagline', () => {
+    const wrapper = mountAbout()
+    const tagline = wrapper.find('.about__tagline')
+
+    expect(tagline.find('.about__tagline-text').text()).toBe(about.subheading)
+    expect(tagline.find('.cursor-block').attributes('aria-hidden')).toBe('true')
+  })
+
+  it('links onward to work and contact', () => {
+    const wrapper = mountAbout()
+
     expect(wrapper.find('a[href="/portfolio"]').exists()).toBe(true)
     expect(wrapper.find('a[href="/contact"]').exists()).toBe(true)
   })

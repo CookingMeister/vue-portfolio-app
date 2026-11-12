@@ -24,6 +24,17 @@ describe('WorkCard', () => {
     expect(wrapper.text()).toContain('Closed source')
   })
 
+  it('labels upcoming samples without claiming they are closed source or released', () => {
+    const wrapper = mount(WorkCard, {
+      props: { ...base, sourcePlanned: true, status: 'In development' }
+    })
+
+    expect(wrapper.find('.work-card__status').text()).toBe('In development')
+    expect(wrapper.text()).toContain('Sample source planned')
+    expect(wrapper.text()).not.toContain('Closed source')
+    expect(wrapper.findAll('a')).toHaveLength(0)
+  })
+
   it('renders demo and source links that open safely', () => {
     const wrapper = mount(WorkCard, {
       props: {

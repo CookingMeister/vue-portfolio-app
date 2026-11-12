@@ -1,46 +1,55 @@
 <template>
   <section id="About" class="section-panel about">
-    <div class="container">
-      <!--
-        Source order is heading -> portrait -> copy, the right reading and tab
-        order on a phone. Grid areas move the portrait into a left column on wide
-        screens without reordering the markup.
-      -->
+    <div class="container px-4">
+      <!-- Source order stays natural on phones; grid areas create the desktop layout. -->
       <div class="about__grid">
-        <Transition name="fade-down" appear>
-          <div class="about__intro">
-            <h1 class="display-5 fw-500">{{ about.heading }}</h1>
-            <p class="lead fw-500 mb-0">{{ about.subheading }}</p>
-          </div>
-        </Transition>
+        <div class="about__intro">
+          <p class="section-path" aria-hidden="true">~/about</p>
+          <h1 class="display-5 fw-500">{{ about.heading }}</h1>
+          <p class="about__tagline lead fw-500 mb-0">
+            <span class="about__tagline-text">{{ about.subheading }}</span><span
+              class="cursor-block about__cursor"
+              aria-hidden="true"
+            ></span>
+          </p>
+        </div>
 
-        <Transition name="fade" appear>
-          <div class="about__portrait">
-            <img
-              :src="about.portrait.src"
-              :alt="about.portrait.alt"
-              class="profile-pic rounded-circle"
-              width="320"
-              height="320"
-              fetchpriority="high"
-              decoding="async"
-            />
-            <p class="about__meta">{{ site.location }}<br />{{ site.domain }}</p>
-          </div>
-        </Transition>
+        <div class="about__portrait">
+          <img
+            :src="about.portrait.src"
+            :alt="about.portrait.alt"
+            class="profile-pic rounded-circle"
+            width="320"
+            height="320"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <p class="about__meta">{{ site.location }}</p>
+        </div>
 
-        <Transition name="fade-up" appear>
-          <div class="about__copy">
-            <p v-for="(paragraph, i) in about.paragraphs" :key="i">
-              {{ paragraph }}
-            </p>
+        <div class="about__copy">
+          <p v-for="(paragraph, i) in about.paragraphs" :key="i">
+            {{ paragraph }}
+          </p>
 
-            <div class="about__actions">
-              <RouterLink class="keycap" to="/portfolio">See my work</RouterLink>
-              <RouterLink class="keycap keycap--alt" to="/contact">Get in touch</RouterLink>
-            </div>
+          <div class="about__actions">
+            <RouterLink class="keycap" to="/portfolio">See my work</RouterLink>
+            <RouterLink class="keycap keycap--alt" to="/contact">Get in touch</RouterLink>
           </div>
-        </Transition>
+        </div>
+
+        <aside class="about__highlights" aria-labelledby="highlights-heading">
+          <h2 id="highlights-heading" class="prompt-heading">
+            <span aria-hidden="true">$ highlights --top</span>
+            <span class="visually-hidden">Career highlights</span>
+          </h2>
+          <ul class="about__highlight-list list-unstyled">
+            <li v-for="highlight in about.highlights" :key="highlight.value">
+              <strong>{{ highlight.value }}</strong>
+              <span>{{ highlight.label }}</span>
+            </li>
+          </ul>
+        </aside>
       </div>
     </div>
   </section>
@@ -53,13 +62,7 @@ import { about, site } from '@/data/site.js'
 
 <style scoped>
 .about {
-  /* One dial for the portrait size at each breakpoint. */
   --portrait-size: clamp(150px, 38vw, 190px);
-  /* Only the two-column layout drops the portrait; centred, it stays put. */
-  --portrait-offset: 0rem;
-
-  /* Same header-relative rhythm as every other page - see styles.css. */
-  padding-top: calc(var(--header-height) + var(--section-lead));
   padding-bottom: 4rem;
   color: var(--c-cream);
 }
@@ -68,7 +71,6 @@ import { about, site } from '@/data/site.js'
   font-weight: 500;
 }
 
-/* Mobile: one column, centred. */
 .about__grid {
   display: grid;
   gap: 2rem;
@@ -80,16 +82,29 @@ import { about, site } from '@/data/site.js'
   margin-bottom: 0.75rem;
 }
 
+.about__tagline {
+  font-family: var(--font-mono);
+  font-size: clamp(0.82rem, 2.5vw, 1rem);
+  line-height: 1.6;
+  color: var(--c-cream);
+}
+
+.about__cursor {
+  margin-left: 0.2em;
+}
+
 .about__portrait {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  animation: portrait-in var(--dur-base) var(--ease) both;
 }
 
 .profile-pic {
   width: var(--portrait-size);
   height: auto;
+  border: 2px solid var(--c-warm);
 }
 
 .about__meta {
@@ -101,13 +116,11 @@ import { about, site } from '@/data/site.js'
   line-height: 1.6;
 }
 
-/* Light text on a dark ground blooms, so a lighter weight with extra tracking
-   and leading is needed to read as normal body copy. */
 .about__copy p {
+  margin-bottom: 1.15rem;
   font-weight: 300;
   line-height: 1.75;
   letter-spacing: 0.01em;
-  margin-bottom: 1.15rem;
   text-align: left;
 }
 
@@ -119,73 +132,116 @@ import { about, site } from '@/data/site.js'
   margin-top: 2rem;
 }
 
-/* Wide screens: portrait left, heading and copy stacked on the right. */
+.about__highlights {
+  width: 100%;
+  text-align: left;
+}
+
+.about__highlight-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.about__highlight-list li {
+  display: flex;
+  flex-direction: column;
+  min-height: 6.5rem;
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--c-cream);
+  background:
+    repeating-linear-gradient(rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px), var(--c-plate);
+  border: 1px solid rgba(255, 179, 71, 0.38);
+  border-radius: var(--radius-key);
+}
+
+.about__highlight-list strong {
+  margin-bottom: 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--c-warm);
+}
+
+@keyframes portrait-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Reveal only the text; the cursor keeps the shared shape and blink timing.
+   Clipping preserves the text baseline so the adjacent cursor stays aligned.
+   Phones and reduced-motion users see the complete tagline immediately. */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .about__tagline-text {
+    display: inline-block;
+    width: 0;
+    white-space: nowrap;
+    clip-path: inset(0);
+    animation: tagline-type 1.5s steps(63, end) forwards;
+  }
+}
+
+@keyframes tagline-type {
+  to {
+    width: 63ch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__portrait {
+    animation: none;
+  }
+}
+
 @media (min-width: 992px) {
   .about {
     --portrait-size: 13.5rem;
-    /* A small drop keeps the portrait from crowding the title without leaving
-       a conspicuous blank column above it. */
-    --portrait-offset: 1.5rem;
   }
 
   .about__grid {
-    grid-template-columns: minmax(0, var(--portrait-size)) minmax(0, 1fr);
-    grid-template-rows: auto 1fr;
+    grid-template-columns: minmax(0, var(--portrait-size)) minmax(0, 1fr) minmax(13rem, 0.55fr);
     grid-template-areas:
-      'portrait intro'
-      'portrait copy';
-    column-gap: 3rem;
+      'portrait intro intro'
+      'portrait copy highlights';
+    column-gap: 2.5rem;
     row-gap: 1.75rem;
     justify-items: stretch;
-    text-align: left;
     align-items: start;
+    text-align: left;
   }
 
   .about__intro {
     grid-area: intro;
   }
 
-  /* Spans both rows, so it is offset from the heading rather than the copy. */
   .about__portrait {
     grid-area: portrait;
-    margin-top: var(--portrait-offset);
+    margin-top: 1.5rem;
   }
 
   .about__copy {
     grid-area: copy;
-    max-width: 46rem;
   }
 
   .about__actions {
     justify-content: flex-start;
   }
-}
 
-.fade-down-enter-active,
-.fade-down-leave-active,
-.fade-enter-active,
-.fade-leave-active,
-.fade-up-enter-active,
-.fade-up-leave-active {
-  transition:
-    opacity var(--dur-slow) ease,
-    transform var(--dur-slow) ease;
-}
+  .about__highlights {
+    grid-area: highlights;
+  }
 
-.fade-down-enter-from,
-.fade-down-leave-to {
-  opacity: 0;
-  transform: translateY(-80px);
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.fade-up-enter-from,
-.fade-up-leave-to {
-  opacity: 0;
-  transform: translateY(80px);
+  .about__highlight-list {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

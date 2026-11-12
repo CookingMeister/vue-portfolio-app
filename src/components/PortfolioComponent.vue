@@ -7,7 +7,8 @@
 
       <h2 class="fs-5 portfolio__subhead">Featured work</h2>
       <p class="portfolio__note">
-        Professional and proprietary projects. The code is not public, but here is what they are.
+        Professional projects and current PL/B development. Source availability is noted on each
+        project.
       </p>
       <!-- One card per row: these carry the longest descriptions, and a
            screenshot beside the text needs the full width to stay short. -->
@@ -15,6 +16,8 @@
         <WorkCard
           v-for="project in featured"
           :key="project.id"
+          :status="project.status"
+          :source-planned="project.sourcePlanned"
           :title="project.title"
           :description="project.description"
           :image="project.image"
@@ -29,6 +32,8 @@
         <WorkCard
           v-for="project in personal"
           :key="project.id"
+          :status="project.status"
+          :source-planned="project.sourcePlanned"
           :title="project.title"
           :description="project.description"
           :image="project.image"
@@ -38,32 +43,35 @@
         />
       </div>
 
-      <h2 class="fs-5 portfolio__subhead">Earlier work</h2>
-      <p class="portfolio__note">
-        Smaller projects from when I was learning full-stack development.
-      </p>
-      <ul class="earlier list-unstyled">
-        <li v-for="project in earlier" :key="project.id" class="earlier__row">
-          <div>
-            <h3 class="earlier__title">{{ project.title }}</h3>
-            <p class="earlier__desc">{{ project.description }}</p>
-          </div>
-          <div class="earlier__links">
-            <a
-              v-for="link in project.links"
-              :key="link.url"
-              class="earlier__link"
-              :href="link.url"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <AppIcon :name="link.type === 'github' ? 'github' : 'external'" />
-              <span>{{ linkLabels[link.type] }}</span>
-              <span class="visually-hidden">for {{ project.title }} (opens in a new tab)</span>
-            </a>
-          </div>
-        </li>
-      </ul>
+      <section aria-labelledby="earlier-work-heading">
+        <p class="section-path" aria-hidden="true">~/portfolio/archive</p>
+        <h2 id="earlier-work-heading" class="fs-5 portfolio__subhead">Earlier work</h2>
+        <p class="portfolio__note">
+          Smaller projects from when I was learning full-stack development.
+        </p>
+        <ul class="earlier list-unstyled">
+          <li v-for="project in earlier" :key="project.id" class="earlier__row">
+            <div>
+              <h3 class="earlier__title">{{ project.title }}</h3>
+              <p class="earlier__desc">{{ project.description }}</p>
+            </div>
+            <div class="earlier__links">
+              <a
+                v-for="link in project.links"
+                :key="link.url"
+                class="earlier__link"
+                :href="link.url"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <AppIcon :name="link.type === 'github' ? 'github' : 'external'" />
+                <span>{{ linkLabels[link.type] }}</span>
+                <span class="visually-hidden">for {{ project.title }} (opens in a new tab)</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </section>
     </div>
   </section>
 </template>

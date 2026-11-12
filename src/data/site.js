@@ -18,6 +18,11 @@ export const site = {
     'building new ones to spec.'
 }
 
+export const websiteServices = {
+  name: 'Sunbelt Computer Software',
+  url: 'https://www.sunbelt-plb.net/contact/'
+}
+
 export const socialLinks = [
   {
     id: 'github',
@@ -38,16 +43,20 @@ export const socialLinks = [
 ]
 
 export const about = {
-  heading: 'I am Shawn Meister',
+  heading: 'Shawn Meister',
   subheading: 'Full-Stack Developer / Former Executive Chef / Homelab Tinkerer',
   paragraphs: [
     'I came to this career sideways. Before writing software I ran kitchens as an executive chef, and the habits came with me: work clean, respect the timing, and never send out something you would not happily eat yourself. That is where the name fullstackchef.dev comes from.',
 
-    'I work across both legacy and modern codebases - PHP, JavaScript, C, C++, and PL/B including Visual PL/B. Much of my work is on the PL/B language runtime itself - a long-lived C and C++ codebase, where every change is inherited by all applications written in the language. The rest is modernization: taking sites that have been running for decades and rewriting, refactoring, or rebuilding them to client specification. I have delivered three of those end to end, running on IIS 10.',
+    'My day-to-day work spans PHP, JavaScript, C, C++, and PL/B, from the PL/B runtime to modernizing long-running client sites. I also handle website design and redesign as a secondary offering at Sunbelt.',
 
-    'Most recently I wrote a regex engine in C for the PL/B runtime - a lighter alternative to PCRE2 that still supports grouping, backtracking, and replacement.',
-
-    'Off the clock I run a homelab on Proxmox VE, TrueNAS CE and OPNsense, with a Talos Linux Kubernetes cluster managed by GitOps. It started as a way to learn Bash, Linux and networking properly, and it keeps paying that back. When I am not in a terminal I am outdoors somewhere in the Saint John River valley.'
+    'Off the clock I run Proxmox VE, TrueNAS CE, OPNsense, and a Talos Linux Kubernetes cluster managed by GitOps. When I am not in a terminal I am outdoors somewhere in the Saint John River valley.'
+  ],
+  highlights: [
+    { value: '13 years', label: 'running professional kitchens' },
+    { value: '4 sites', label: 'from the early to mid-1990s rebuilt' },
+    { value: '15 methods', label: 'in a regex engine built in C' },
+    { value: '3 nodes', label: 'in a Talos k8s cluster' }
   ],
   portrait: {
     src: '/img/profile.webp',
@@ -59,11 +68,38 @@ export const about = {
 export const linkLabels = { github: 'Source', demo: 'Live demo', site: 'Live site' }
 
 /**
- * `links: []` marks closed-source work; those cards render without a link row.
+ * `links: []` marks closed-source work unless `sourcePlanned` flags an upcoming sample.
+ * `status` labels work in progress without implying it has shipped.
  * A link's optional `label` replaces the default text for its type.
  * `earlier: true` moves a project to the compact "Earlier work" list.
  */
 export const projects = [
+  {
+    id: 'plb-chat-ide',
+    title: 'PL/B IDE Help Bot',
+    description:
+      'A closed-source IDE help bot currently in development, built in PL/B ' +
+      'with SQLite for database storage.',
+    tags: ['PL/B', 'SQLite'],
+    status: 'In development',
+    featured: true,
+    closedSource: true,
+    links: []
+  },
+  {
+    id: 'plb-chromadb-sample',
+    title: 'PL/B ChromaDB Sample',
+    description:
+      'A PL/B sample application in development that answers questions using HTML help files. ' +
+      'Ollama runs Gemma 4 for chat, while embedding-gemma-2 converts the help content ' +
+      'into vectors stored in ChromaDB for retrieval-augmented generation (RAG). ' +
+      'Planned for release in the PL/B samples repository.',
+    tags: ['PL/B', 'ChromaDB', 'Ollama', 'Gemma 4', 'embedding-gemma-2', 'RAG'],
+    status: 'In development',
+    featured: true,
+    sourcePlanned: true,
+    links: []
+  },
   {
     id: 'plb-regex-engine',
     title: 'PL/B Regex Engine',
@@ -129,9 +165,12 @@ export const projects = [
     id: 'openai-vue-app',
     title: 'OpenAI Chat App',
     description:
-      'Text and image chat client for the OpenAI API. A Vue 3 front end talks to an Express ' +
+      'Text and image chat client for the OpenAI API with document-based ' +
+      'retrieval-augmented generation (RAG). Document chunks and embeddings are stored ' +
+      'in the browser using IndexedDB, ranked by cosine similarity, and retrieved as ' +
+      'context for answers with source citations. A Vue 3 front end talks to an Express ' +
       'backend that keeps the API key server-side and handles image uploads.',
-    tags: ['Vue 3', 'Vite', 'Express', 'OpenAI API'],
+    tags: ['Vue 3', 'Vite', 'Express', 'OpenAI API', 'IndexedDB', 'RAG'],
     image: '/img/openai-chat.webp',
     alt: 'Dark-themed chat interface showing a conversation about C++ with a model selector and message box',
     // No demo: the app needs an OpenAI API key, so there is nothing to host publicly.
@@ -173,10 +212,7 @@ export const projects = [
     description: 'Interactive movie picker built on a third-party film API.',
     tags: ['JavaScript', 'REST API', 'CSS'],
     earlier: true,
-    links: [
-      { type: 'demo', url: 'https://samgreenwood84.github.io/christmas-movie-generator/' },
-      { type: 'github', url: 'https://github.com/CookingMeister/christmas-movie-generator' }
-    ]
+    links: [{ type: 'github', url: 'https://github.com/CookingMeister/christmas-movie-generator' }]
   },
   {
     id: 'weather-dashboard',
@@ -229,7 +265,7 @@ export const skillCategories = [
   {
     id: 'databases',
     title: 'Databases',
-    skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'SQLite']
+    skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'SQLite', 'IndexedDB', 'ChromaDB (vector database)']
   },
   {
     id: 'tools',
@@ -270,8 +306,9 @@ export const skillCategories = [
   },
   {
     id: 'ai',
-    title: 'AI Tooling',
+    title: 'AI & Retrieval',
     skills: [
+      'Retrieval-augmented generation (RAG)',
       'Claude Code',
       'ChatGPT',
       'Ollama',
@@ -289,7 +326,7 @@ export const whoami = [
   { key: 'base', value: site.location },
   { key: 'works in', value: 'C, C++, PL/B, PHP, JavaScript' },
   { key: 'runs', value: 'Talos Kubernetes on Proxmox VE' },
-  { key: 'before', value: 'Executive chef, 8 years' }
+  { key: 'before', value: 'Ran professional kitchens, 13 years' }
 ]
 
 /**

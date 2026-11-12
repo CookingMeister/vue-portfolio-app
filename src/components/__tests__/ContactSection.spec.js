@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ContactSection from '../ContactSection.vue'
-import { socialLinks } from '@/data/site.js'
+import { socialLinks, websiteServices } from '@/data/site.js'
 
 describe('ContactSection', () => {
   it('renders the Contact heading', () => {
@@ -26,7 +26,21 @@ describe('ContactSection', () => {
 
   it('renders one card per configured social link', () => {
     const wrapper = mount(ContactSection)
-    expect(wrapper.findAll('a')).toHaveLength(socialLinks.length)
+    expect(wrapper.findAll('a.contact-card')).toHaveLength(socialLinks.length)
+  })
+
+  it('directs website enquiries to Sunbelt rather than personal social links', () => {
+    const wrapper = mount(ContactSection)
+    const services = wrapper.find('.contact__services')
+    const link = services.find('a')
+
+    expect(services.text()).toContain('Need a new website or a redesign? Get in touch with')
+    expect(services.text()).toContain('to discuss your project.')
+    expect(link.text()).toContain(websiteServices.name)
+    expect(link.attributes('href')).toBe(websiteServices.url)
+    expect(link.attributes('href')).toBe('https://www.sunbelt-plb.net/contact/')
+    expect(link.attributes('target')).toBe('_blank')
+    expect(link.attributes('rel')).toContain('noopener')
   })
 
   it('renders no message form', () => {

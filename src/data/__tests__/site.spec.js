@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest'
-import { projects, socialLinks, skillCategories, resumeFile } from '../site.js'
+import { projects, socialLinks, skillCategories, resumeFile, websiteServices } from '../site.js'
 
 const allLinks = [
+  websiteServices.url,
   ...socialLinks.map((link) => link.url),
   ...projects.flatMap((project) => project.links.map((link) => link.url))
 ]
@@ -26,11 +27,30 @@ describe('site data', () => {
     expect(new Set(ids).size).toBe(ids.length)
   })
 
-  it('offers source or an explicit closed-source note for every project', () => {
+  it('declares source availability for every project', () => {
     for (const project of projects) {
       const hasSource = project.links.some((link) => link.type === 'github')
-      expect(hasSource || project.closedSource, project.title).toBeTruthy()
+      expect(hasSource || project.closedSource || project.sourcePlanned, project.title).toBeTruthy()
     }
+  })
+
+  it('keeps the SQLite IDE help bot separate from the upcoming ChromaDB sample', () => {
+    const ide = projects.find((project) => project.id === 'plb-chat-ide')
+    const sample = projects.find((project) => project.id === 'plb-chromadb-sample')
+
+    expect(ide.title).toBe('PL/B IDE Help Bot')
+    expect(sample.title).toBe('PL/B ChromaDB Sample')
+    expect(sample.description).toContain('HTML help files')
+    expect(sample.tags).toEqual(expect.arrayContaining(['Ollama', 'Gemma 4', 'embedding-gemma-2']))
+    expect(ide.tags).toContain('SQLite')
+    expect(ide.tags).not.toContain('ChromaDB')
+    expect(ide.closedSource).toBe(true)
+    expect(sample.tags).toContain('ChromaDB')
+    expect(sample.sourcePlanned).toBe(true)
+    expect(sample.closedSource).not.toBe(true)
+    expect(sample.links).toEqual([])
+    expect(ide.status).toBe('In development')
+    expect(sample.status).toBe('In development')
   })
 
   it('only uses link types the card knows how to render', () => {

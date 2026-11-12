@@ -5,7 +5,7 @@
         <!-- "86'd" is kitchen shorthand for a dish that has run out. -->
         <h1 class="error-page__code">86'd</h1>
         <p class="error-page__lead">This page is off the menu.</p>
-        <p class="error-page__plain mb-4">404 &mdash; Page Not Found</p>
+        <p class="error-page__plain mb-4">404 - Page Not Found</p>
         <RouterLink class="keycap" to="/">Back to home</RouterLink>
       </div>
     </Transition>

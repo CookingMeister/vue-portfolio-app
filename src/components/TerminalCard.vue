@@ -50,7 +50,7 @@ const host = `${site.name.split(' ')[0].toLowerCase()}@${site.brand}`
   background:
     repeating-linear-gradient(rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 3px), var(--c-plate);
   border: 1px solid rgba(255, 179, 71, 0.45);
-  border-radius: 8px;
+  border-radius: var(--radius-key);
   box-shadow: 0 0 22px rgba(255, 179, 71, 0.12);
 }
 

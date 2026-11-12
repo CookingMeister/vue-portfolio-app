@@ -45,7 +45,7 @@ export const routes = [
     component: () => import('../views/ContactView.vue'),
     meta: {
       title: `Contact - ${site.name}`,
-      description: `Get in touch with ${site.name} on GitHub or LinkedIn.`
+      description: `Reach ${site.name} on LinkedIn, explore projects on GitHub, or enquire about website design and redesign through Sunbelt Computer Software.`
     }
   },
   {

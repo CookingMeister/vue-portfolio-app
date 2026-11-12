@@ -64,8 +64,6 @@
 
   /* Surfaces */
   --grad-brand: linear-gradient(135deg, var(--c-ground-deep), var(--c-ground-soft));
-  /* Cards sit *above* the ground: on a dark UI, elevation reads as lighter. */
-  --surface-card: linear-gradient(135deg, #1b3a5c, #21486f);
   --surface-scrim: rgba(0, 0, 0, 0.55);
   --surface-sunken: rgba(0, 0, 0, 0.3);
   /* Faint divider for flat, card-free lists. */
@@ -73,14 +71,8 @@
 
   /* Borders + edges */
   --border-soft: 1px solid rgba(250, 235, 215, 0.5);
-  --radius-sm: 3px;
+  /* Shared terminal-style corners for every rectangular surface and control. */
   --radius-key: 5px;
-  --radius-md: 0.75rem;
-  --radius-pill: 50px;
-
-  /* Elevation */
-  --shadow-card: 0 18px 50px -12px rgba(0, 0, 0, 0.65);
-  --shadow-hover: 0 24px 60px -12px rgba(0, 0, 0, 0.75);
 
   /* Type */
   --font-body: 'Roboto Variable', Roboto, system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -140,7 +132,7 @@ body {
 :focus-visible {
   outline: 3px solid var(--c-accent);
   outline-offset: 3px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-key);
 }
 
 /* ==========================================================================
@@ -207,7 +199,7 @@ body {
   color: var(--c-ground-deep);
   font-weight: 600;
   text-decoration: none;
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  border-radius: 0 0 var(--radius-key) var(--radius-key);
   transition: translate var(--dur-base) var(--ease);
 }
 

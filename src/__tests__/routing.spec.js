@@ -41,6 +41,18 @@ describe('routing', () => {
     expect(text).toContain('Closed source')
   })
 
+  it('separates earlier projects into a labelled archive', async () => {
+    const { wrapper } = await mountAt('/portfolio')
+    const archive = wrapper.find('section[aria-labelledby="earlier-work-heading"]')
+
+    expect(archive.find('.section-path').text()).toBe('~/portfolio/archive')
+    expect(archive.find('h2').text()).toBe('Earlier work')
+    expect(archive.findAll('.earlier__row')).toHaveLength(
+      projects.filter((project) => project.earlier).length
+    )
+    expect(archive.find('.work-card').exists()).toBe(false)
+  })
+
   it('renders the resume and contact views', async () => {
     expect((await mountAt('/resume')).wrapper.text()).toContain('Download Resume')
     expect((await mountAt('/contact')).wrapper.text()).toContain('LinkedIn')

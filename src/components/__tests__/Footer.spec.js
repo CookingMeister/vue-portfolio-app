@@ -17,9 +17,10 @@ describe('Footer', () => {
     expect(wrapper.find('a[href="https://www.linkedin.com/in/shawn-meister/"]').exists()).toBe(true)
   })
 
-  it('signs the page with the name only - no domain, no location', () => {
+  it('signs the page with the name, without repeating the domain or full location', () => {
     // The domain is already in the address bar and on the About page, and the
-    // location appears there too, so the footer repeats neither.
+    // location is spelled out there too. The status bar carries only a short
+    // path-style tag for the place.
     const wrapper = mount(Footer)
 
     expect(wrapper.text()).toContain(site.name)
@@ -27,11 +28,17 @@ describe('Footer', () => {
     expect(wrapper.text()).not.toContain(site.location)
   })
 
+  it('links to the source of the site', () => {
+    const wrapper = mount(Footer)
+    expect(wrapper.find(`a[href="${site.repo}"]`).text()).toContain('Source')
+  })
+
   it('opens every external link safely', () => {
     const wrapper = mount(Footer)
     const anchors = wrapper.findAll('a')
 
-    expect(anchors).toHaveLength(socialLinks.length)
+    // The social profiles, plus the link to this site's source.
+    expect(anchors).toHaveLength(socialLinks.length + 1)
     for (const anchor of anchors) {
       expect(anchor.attributes('target')).toBe('_blank')
       expect(anchor.attributes('rel')).toContain('noopener')

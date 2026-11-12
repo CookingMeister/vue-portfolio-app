@@ -1,7 +1,5 @@
 <template>
   <header ref="headerEl" class="site-header" :class="{ 'site-header--scrolled': isScrolled }">
-    <div class="site-header__scrim"></div>
-
     <RouterLink to="/" class="site-header__brand" :aria-label="`${site.brand} - home`">
       <img
         :src="brandIcon"
@@ -11,7 +9,11 @@
         height="36"
         aria-hidden="true"
       />
-      <span class="fs-4 mx-2">{{ site.brand }}</span>
+      <!-- Typed like a prompt: the brand, the TLD dimmed, then a block cursor. -->
+      <span class="site-header__name">
+        {{ site.brand }}<span class="site-header__tld">{{ tld }}</span
+        ><span class="site-header__cursor" aria-hidden="true"></span>
+      </span>
     </RouterLink>
 
     <nav aria-label="Main">
@@ -29,6 +31,8 @@ import NavLink from './NavLink.vue'
 import { site } from '@/data/site.js'
 
 const brandIcon = '/img/fullstackchef.png'
+// ".dev" - whatever follows the brand in the domain.
+const tld = site.domain.slice(site.brand.length)
 
 const navItems = [
   { url: '/', name: 'About' },
@@ -93,16 +97,17 @@ onUnmounted(() => {
   width: 100%;
   padding: 26px 1rem;
   font-weight: 500;
-  background-image: url('/img/Designer.webp');
-  background-position: center;
+  /* A CRT plate: faint scanlines, with an amber phosphor edge along the bottom. */
+  background:
+    repeating-linear-gradient(rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px), var(--c-plate);
+  border-bottom: 1px solid rgba(255, 179, 71, 0.55);
+  box-shadow: 0 1px 14px rgba(255, 179, 71, 0.22);
+  transition: box-shadow var(--dur-base) var(--ease);
 }
 
-.site-header__scrim {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  backdrop-filter: blur(4px);
-  background-color: var(--surface-scrim);
+/* The glow strengthens once the page scrolls beneath the header. */
+.site-header--scrolled {
+  box-shadow: 0 2px 22px rgba(255, 179, 71, 0.35);
 }
 
 .site-header__brand {
@@ -121,7 +126,39 @@ onUnmounted(() => {
   mix-blend-mode: screen;
 }
 
-.site-header--scrolled .site-header__brand {
-  color: var(--c-accent);
+.site-header__name {
+  margin-left: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.site-header__tld {
+  opacity: 0.55;
+}
+
+.site-header__cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 0.2rem;
+  vertical-align: -0.18em;
+  background: var(--c-warm);
+  box-shadow: 0 0 10px rgba(255, 179, 71, 0.7);
+  /* `steps(1)`: a hard blink, not a fade. Under reduced motion the global rule
+     in styles.css runs it once and leaves the cursor lit. */
+  animation: cursor-blink 1.1s steps(1) infinite;
+}
+
+@keyframes cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.site-header__brand:hover {
+  color: var(--c-warm);
 }
 </style>

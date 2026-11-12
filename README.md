@@ -34,7 +34,7 @@ src/
   app.js            Shared app factory used by both the browser and the prerenderer
   main.js           Browser entry — hydrates the prerendered markup
   entry-server.js   Build-time entry — renders one route to HTML
-  assets/styles.css Design tokens, self-hosted font face, layout primitives
+  assets/styles.css Design tokens, self-hosted font faces, layout primitives
 scripts/
   prerender.mjs     Writes one HTML file per route into dist/
 ```
@@ -210,7 +210,8 @@ Use Full (strict) SSL mode so Cloudflare verifies the origin certificate.
 - Vue.js 3 + Vue Router 5
 - Vite 8
 - Bootstrap 5
-- Roboto, self-hosted via `@fontsource-variable/roboto` (no font CDN)
+- Roboto and IBM Plex Mono, self-hosted via `@fontsource-variable/roboto` and
+  `@fontsource/ibm-plex-mono` (no font CDN)
 - Vitest 5 with jsdom for unit and integration testing
 - ESLint (flat config) + Prettier
 - Docker and Docker Compose

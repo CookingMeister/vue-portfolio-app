@@ -167,7 +167,7 @@ defineProps({
 
 .work-card__link:hover,
 .work-card__link:focus-visible {
-  color: var(--c-accent);
+  color: var(--c-warm);
   text-decoration: underline;
 }
 

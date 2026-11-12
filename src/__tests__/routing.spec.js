@@ -49,6 +49,7 @@ describe('routing', () => {
   it('shows the 404 view for an unknown path', async () => {
     const { wrapper } = await mountAt('/no-such-page')
     expect(wrapper.text()).toContain('Page Not Found')
+    expect(wrapper.text()).toContain("86'd")
   })
 
   it('gives every page exactly one h1', async () => {

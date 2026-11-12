@@ -67,9 +67,9 @@ import { socialLinks } from '@/data/site.js'
 
 .contact-card:hover,
 .contact-card:focus-visible {
-  color: var(--c-accent);
+  color: var(--c-warm);
   background-color: var(--surface-scrim);
-  border-color: var(--c-accent);
+  border-color: var(--c-warm);
   transform: translateY(-3px);
 }
 

@@ -8,7 +8,9 @@
       <p class="portfolio__note">
         Professional and proprietary projects. The code is not public, but here is what they are.
       </p>
-      <div class="row row-cols-1 row-cols-md-2 align-items-stretch g-4 pb-5 portfolio__grid">
+      <!-- One card per row: these carry the longest descriptions, and a
+           screenshot beside the text needs the full width to stay short. -->
+      <div class="row row-cols-1 g-4 pb-5 portfolio__grid">
         <WorkCard
           v-for="project in featured"
           :key="project.id"
@@ -151,7 +153,7 @@ const earlier = projects.filter((project) => project.earlier)
 
 .earlier__link:hover,
 .earlier__link:focus-visible {
-  color: var(--c-accent);
+  color: var(--c-warm);
   text-decoration: underline;
 }
 </style>

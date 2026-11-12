@@ -31,11 +31,15 @@ defineProps({
 }
 
 .site-nav__link:hover {
-  color: var(--c-accent);
+  color: var(--c-warm);
 }
 
+/* An amber underline, like a selected tab on a terminal status line. */
 .site-nav__link.active {
   color: var(--c-cream);
   background-color: var(--surface-sunken);
+  box-shadow: inset 0 -2px 0 var(--c-warm);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 </style>

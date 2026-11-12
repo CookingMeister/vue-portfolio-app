@@ -12,7 +12,7 @@
       <!-- Typed like a prompt: the brand, the TLD dimmed, then a block cursor. -->
       <span class="site-header__name">
         {{ site.brand }}<span class="site-header__tld">{{ tld }}</span
-        ><span class="site-header__cursor" aria-hidden="true"></span>
+        ><span class="cursor-block site-header__cursor" aria-hidden="true"></span>
       </span>
     </RouterLink>
 
@@ -139,23 +139,9 @@ onUnmounted(() => {
   opacity: 0.55;
 }
 
+/* The cursor itself is the shared `.cursor-block` in styles.css. */
 .site-header__cursor {
-  display: inline-block;
-  width: 0.55em;
-  height: 1.05em;
   margin-left: 0.2rem;
-  vertical-align: -0.18em;
-  background: var(--c-warm);
-  box-shadow: 0 0 10px rgba(255, 179, 71, 0.7);
-  /* `steps(1)`: a hard blink, not a fade. Under reduced motion the global rule
-     in styles.css runs it once and leaves the cursor lit. */
-  animation: cursor-blink 1.1s steps(1) infinite;
-}
-
-@keyframes cursor-blink {
-  50% {
-    opacity: 0;
-  }
 }
 
 .site-header__brand:hover {

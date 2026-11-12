@@ -27,7 +27,7 @@ describe('routing', () => {
     const { wrapper } = await mountAt('/')
 
     expect(wrapper.find('h1').text()).toContain(site.name)
-    expect(wrapper.text()).toContain('head chef')
+    expect(wrapper.text()).toContain('executive chef')
     expect(wrapper.find(`img[src="${about.portrait.src}"]`).exists()).toBe(true)
   })
 

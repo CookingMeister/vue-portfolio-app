@@ -36,12 +36,8 @@
             </p>
 
             <div class="about__actions">
-              <RouterLink class="btn btn-outline-light rounded-pill px-4" to="/portfolio">
-                See my work
-              </RouterLink>
-              <RouterLink class="btn btn-outline-info rounded-pill px-4" to="/contact">
-                Get in touch
-              </RouterLink>
+              <RouterLink class="keycap" to="/portfolio">See my work</RouterLink>
+              <RouterLink class="keycap keycap--alt" to="/contact">Get in touch</RouterLink>
             </div>
           </div>
         </Transition>

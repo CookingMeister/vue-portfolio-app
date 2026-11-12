@@ -24,12 +24,13 @@ defineProps({
   border-bottom: var(--border-hairline);
 }
 
+/* Mono and amber, like the keys in the terminal card above the list. */
 .skill-row__label {
   margin: 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.025em;
-  color: var(--c-accent);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--c-warm);
 }
 
 .skill-row__chips {
@@ -44,7 +45,6 @@ defineProps({
 .chip {
   background: rgba(0, 0, 0, 0.16);
   border-color: rgba(250, 235, 215, 0.2);
-  border-radius: var(--radius-md);
 }
 
 /* Label moves into its own column, so each category reads as one line. */

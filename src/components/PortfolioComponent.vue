@@ -1,6 +1,7 @@
 <template>
   <section id="Work" class="section-panel">
     <div class="container px-4">
+      <p class="section-path" aria-hidden="true">~/portfolio</p>
       <h1 class="fs-2 section-title">Portfolio</h1>
       <div class="section-rule"></div>
 

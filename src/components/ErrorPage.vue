@@ -6,9 +6,7 @@
         <h1 class="error-page__code">86'd</h1>
         <p class="error-page__lead">This page is off the menu.</p>
         <p class="error-page__plain mb-4">404 &mdash; Page Not Found</p>
-        <RouterLink class="btn btn-outline-light rounded-pill px-4" to="/">
-          Back to home
-        </RouterLink>
+        <RouterLink class="keycap" to="/">Back to home</RouterLink>
       </div>
     </Transition>
   </section>

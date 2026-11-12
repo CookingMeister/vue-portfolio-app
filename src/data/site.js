@@ -10,7 +10,7 @@ export const site = {
   url: 'https://fullstackchef.dev',
   repo: 'https://github.com/CookingMeister/vue-portfolio-app',
   role: 'Full-Stack Developer',
-  tagline: 'Full-stack developer, former head chef',
+  tagline: 'Full-stack developer, former executive chef',
   location: 'Fredericton, New Brunswick',
   description:
     'Full-stack developer in Fredericton, NB. Working across legacy and modern ' +
@@ -39,9 +39,9 @@ export const socialLinks = [
 
 export const about = {
   heading: 'I am Shawn Meister',
-  subheading: 'Full-Stack Developer / Former Head Chef / Homelab Tinkerer',
+  subheading: 'Full-Stack Developer / Former Executive Chef / Homelab Tinkerer',
   paragraphs: [
-    'I came to this career sideways. Before writing software I ran kitchens as a head chef, and the habits came with me: work clean, respect the timing, and never send out something you would not happily eat yourself. That is where the name fullstackchef.dev comes from.',
+    'I came to this career sideways. Before writing software I ran kitchens as an executive chef, and the habits came with me: work clean, respect the timing, and never send out something you would not happily eat yourself. That is where the name fullstackchef.dev comes from.',
 
     'I work across both legacy and modern codebases - PHP, JavaScript, C, C++, and PL/B including Visual PL/B. Much of my work is on the PL/B language runtime itself - a long-lived C and C++ codebase, where every change is inherited by all applications written in the language. The rest is modernization: taking sites that have been running for decades and rewriting, refactoring, or rebuilding them to client specification. I have delivered three of those end to end, running on IIS 10.',
 
@@ -279,6 +279,48 @@ export const skillCategories = [
       'Local models (Qwen, Gemma)',
       'Pi Agent'
     ]
+  }
+]
+
+/** Printed by the terminal card on the Resume page, as the output of `whoami`. */
+export const whoami = [
+  { key: 'name', value: site.name },
+  { key: 'role', value: site.role },
+  { key: 'base', value: site.location },
+  { key: 'works in', value: 'C, C++, PL/B, PHP, JavaScript' },
+  { key: 'runs', value: 'Talos Kubernetes on Proxmox VE' },
+  { key: 'before', value: 'Executive chef, 8 years' }
+]
+
+/**
+ * Newest first. `kind: 'software'` draws a filled dot on the career line; any
+ * other kind ('kitchen', 'education') is life before software and draws a
+ * hollow one. Keep this in step with resume/resume.html, the full record.
+ */
+export const career = [
+  {
+    when: '2024-06 → now',
+    title: 'Software Developer',
+    place: 'Sunbelt Computer Software · Remote',
+    kind: 'software'
+  },
+  {
+    when: '2024',
+    title: 'Certificate, Full Stack Web Development',
+    place: 'University of New Brunswick · top performer, 96%',
+    kind: 'software'
+  },
+  {
+    when: '2015-04 → 2023-09',
+    title: 'Executive Chef',
+    place: 'The Palate Restaurant · Fredericton, NB',
+    kind: 'kitchen'
+  },
+  {
+    when: '2002',
+    title: 'Bachelor of Arts, Psychology and Philosophy',
+    place: 'University of New Brunswick · Fredericton, NB',
+    kind: 'education'
   }
 ]
 

@@ -3,7 +3,7 @@
 [![badge](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/mit)
 
 The source for [fullstackchef.dev](https://fullstackchef.dev) — the portfolio of Shawn Meister,
-a full-stack developer in Fredericton, New Brunswick, and a former head chef.
+a full-stack developer in Fredericton, New Brunswick, and a former executive chef.
 
 Built with Vue 3 (`<script setup>`), Vue Router 5, Vite 8 and Bootstrap 5. It is a fully static
 site: no backend, no build-time secrets, no runtime services. Every route is prerendered to real
@@ -13,7 +13,7 @@ without running JavaScript.
 ## Features
 
 - Interactive portfolio covering both open-source projects and closed-source professional work
-- Resume section with a downloadable CV and categorised skills
+- Resume page with a career timeline, categorised skills and a downloadable PDF
 - Contact section linking to GitHub and LinkedIn
 - Every route prerendered to static HTML, then hydrated into the same SPA
 - Per-route titles, meta descriptions, canonical URLs and Open Graph tags

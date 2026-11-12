@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ResumeSection from '../ResumeSection.vue'
 import DownloadLink from '../DownloadLink.vue'
-import { skillCategories, resumeFile } from '@/data/site.js'
+import { career, skillCategories, resumeFile, whoami } from '@/data/site.js'
 
 describe('ResumeSection', () => {
   it('renders the Resume section with DownloadLink component', () => {
@@ -10,6 +10,36 @@ describe('ResumeSection', () => {
 
     expect(wrapper.text()).toContain('Resume')
     expect(wrapper.findComponent(DownloadLink).exists()).toBe(true)
+  })
+
+  it('prints every whoami fact in the terminal card', () => {
+    const wrapper = mount(ResumeSection)
+    const terminal = wrapper.find('.terminal')
+
+    expect(terminal.findAll('dt')).toHaveLength(whoami.length)
+    for (const fact of whoami) {
+      expect(terminal.text()).toContain(fact.value)
+    }
+  })
+
+  it('lists every career entry, with the years before software marked', () => {
+    const wrapper = mount(ResumeSection)
+    const entries = wrapper.findAll('.career__entry')
+
+    expect(entries).toHaveLength(career.length)
+    for (const entry of career) {
+      expect(wrapper.text()).toContain(entry.title)
+    }
+    expect(wrapper.findAll('.career__entry--before')).toHaveLength(
+      career.filter((entry) => entry.kind !== 'software').length
+    )
+  })
+
+  it('announces plain headings, not the decorative shell prompts', () => {
+    const wrapper = mount(ResumeSection)
+    const headings = wrapper.findAll('h2').map((h2) => h2.find('.visually-hidden').text())
+
+    expect(headings).toEqual(['Experience and education', 'Skills'])
   })
 
   it('renders every skill category from site data', () => {

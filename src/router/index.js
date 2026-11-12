@@ -12,7 +12,7 @@ export const routes = [
       title: `${site.name} - ${site.role}`,
       description: site.description,
       ogDescription:
-        'Former head chef turned full-stack developer. Legacy modernization, a regex ' +
+        'Former executive chef turned full-stack developer. Legacy modernization, a regex ' +
         'engine in C, and a Proxmox homelab.'
     }
   },
@@ -35,8 +35,8 @@ export const routes = [
     meta: {
       title: `Resume - ${site.name}`,
       description:
-        'Skills across languages, frameworks, databases, infrastructure and networking, ' +
-        'plus a downloadable resume.'
+        'Experience, education and skills across languages, frameworks, infrastructure ' +
+        'and networking, plus a downloadable resume.'
     }
   },
   {

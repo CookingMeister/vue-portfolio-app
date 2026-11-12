@@ -6,13 +6,17 @@ const allLinks = [
   ...projects.flatMap((project) => project.links.map((link) => link.url))
 ]
 
+// Client sites that are live on http only. Remove a host once it serves https.
+const PENDING_HTTPS = ['polymathic.com', 'parsons.ca', 'parsons.on.ca']
+
 describe('site data', () => {
   it('has no links to retired Heroku free dynos', () => {
     expect(allLinks.filter((url) => url.includes('herokuapp.com'))).toEqual([])
   })
 
-  it('serves every outbound link over https', () => {
+  it('serves every outbound link over https, except hosts still waiting on a certificate', () => {
     for (const url of allLinks) {
+      if (PENDING_HTTPS.includes(new URL(url).hostname)) continue
       expect(url, url).toMatch(/^https:\/\//)
     }
   })

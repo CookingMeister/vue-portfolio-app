@@ -57,6 +57,18 @@ describe('WorkCard', () => {
     expect(wrapper.text()).not.toContain('Live demo')
   })
 
+  it('prefers the label a link carries over the default for its type', () => {
+    const wrapper = mount(WorkCard, {
+      props: {
+        ...base,
+        links: [{ type: 'site', label: 'example.com', url: 'https://example.com/' }]
+      }
+    })
+
+    expect(wrapper.text()).toContain('example.com')
+    expect(wrapper.text()).not.toContain('Live site')
+  })
+
   it('reserves the padlock for closed-source work, not missing screenshots', () => {
     const linked = mount(WorkCard, {
       props: { ...base, links: [{ type: 'github', url: 'https://github.com/x/y' }] }

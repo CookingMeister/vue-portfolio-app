@@ -35,7 +35,7 @@
             rel="noopener noreferrer"
           >
             <AppIcon :name="link.type === 'github' ? 'github' : 'external'" />
-            <span>{{ linkLabels[link.type] }}</span>
+            <span>{{ link.label ?? linkLabels[link.type] }}</span>
             <span class="visually-hidden">for {{ title }} (opens in a new tab)</span>
           </a>
         </div>
@@ -58,7 +58,7 @@ defineProps({
   image: { type: String, default: '' },
   alt: { type: String, default: '' },
   tags: { type: Array, default: () => [] },
-  /** Each entry is `{ type: 'github' | 'demo' | 'site', url }`. Empty means closed source. */
+  /** Each entry is `{ type: 'github' | 'demo' | 'site', url, label? }`. Empty means closed source. */
   links: { type: Array, default: () => [] }
 })
 </script>

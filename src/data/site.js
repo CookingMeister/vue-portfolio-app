@@ -59,6 +59,7 @@ export const linkLabels = { github: 'Source', demo: 'Live demo', site: 'Live sit
 
 /**
  * `links: []` marks closed-source work; those cards render without a link row.
+ * A link's optional `label` replaces the default text for its type.
  * `earlier: true` moves a project to the compact "Earlier work" list.
  */
 export const projects = [
@@ -81,12 +82,19 @@ export const projects = [
     title: 'Legacy Site Modernization',
     description:
       'Three client websites dating back to 1992, rebuilt from the ground up: restructured, ' +
-      'reworded and restyled as fast, responsive static sites. They run on an IIS 10 server at the client, ' +
-      'and each also carries matching configuration for Azure Static Web Apps.',
+      'reworded and restyled as fast, responsive static sites for Polymathic Group, Parsons ' +
+      'Professional Corporation and Parsons & Cummings. They run on an IIS 10 server at the ' +
+      'client, and each also carries matching configuration for Azure Static Web Apps.',
     tags: ['HTML', 'Tailwind CSS', 'JavaScript', 'IIS 10', 'Azure'],
     featured: true,
     closedSource: true,
-    links: []
+    // http for now: the client's server gets its certificates shortly. Switch these
+    // to https then, and remove the hosts from PENDING_HTTPS in site.spec.js.
+    links: [
+      { type: 'site', label: 'polymathic.com', url: 'http://polymathic.com/' },
+      { type: 'site', label: 'parsons.ca', url: 'http://parsons.ca/' },
+      { type: 'site', label: 'parsons.on.ca', url: 'http://parsons.on.ca/' }
+    ]
   },
   {
     id: 'sunbelt-website',

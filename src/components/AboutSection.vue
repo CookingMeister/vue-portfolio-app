@@ -108,7 +108,7 @@ import { about, site } from '@/data/site.js'
 /* Light text on a dark ground blooms, so a lighter weight with extra tracking
    and leading is needed to read as normal body copy. */
 .about__copy p {
-  font-weight: 200;
+  font-weight: 300;
   line-height: 1.75;
   letter-spacing: 0.01em;
   margin-bottom: 1.15rem;

@@ -46,7 +46,7 @@ export const about = {
 
     'Most recently I wrote a regex engine in C for the PL/B runtime - a lighter alternative to PCRE2 that still supports grouping, backtracking, and replacement.',
 
-    'Off the clock I run a homelab on Proxmox VE, TrueNAS SCALE CE and OPNsense. It started as a way to learn Bash, Linux and networking properly, and it keeps paying that back. When I am not in a terminal I am outdoors somewhere in the Saint John River valley.'
+    'Off the clock I run a homelab on Proxmox VE, TrueNAS CE and OPNsense, with a Talos Linux Kubernetes cluster managed by GitOps. It started as a way to learn Bash, Linux and networking properly, and it keeps paying that back. When I am not in a terminal I am outdoors somewhere in the Saint John River valley.'
   ],
   portrait: {
     src: '/img/profile.png',
@@ -77,6 +77,28 @@ export const projects = [
     featured: true,
     closedSource: true,
     links: []
+  },
+  {
+    id: 'sunbelt-website',
+    title: 'Sunbelt Computer Software Website',
+    description:
+      'A redesign of the website for Sunbelt Computer Software, the PL/B language development ' +
+      'and support company. It presents the Visual PL/B, Web Server, App Server and Data ' +
+      'Manager products alongside the blog, forum and support pages.',
+    tags: ['Web Design', 'Redesign', 'PL/B'],
+    featured: true,
+    closedSource: true,
+    links: [{ type: 'site', url: 'https://www.sunbelt-plb.net/' }]
+  },
+  {
+    id: 'homelab-omni-proxmox',
+    title: 'Talos Kubernetes Homelab',
+    description:
+      'A three-node Talos Linux Kubernetes cluster on Proxmox VE, with machines managed by ' +
+      'Sidero Omni and cluster state delivered from Git by Flux CD. Cilium handles networking ' +
+      'and load balancing, SOPS and age encrypt secrets, and Renovate keeps versions current.',
+    tags: ['Kubernetes', 'Talos Linux', 'Flux CD', 'Cilium', 'Proxmox VE'],
+    links: [{ type: 'github', url: 'https://github.com/CookingMeister/homelab-omni-proxmox' }]
   },
   {
     id: 'openai-vue-app',
@@ -190,7 +212,7 @@ export const skillCategories = [
   {
     id: 'hosting',
     title: 'Hosting & Deployment',
-    skills: ['Azure', 'IIS 10', 'Netlify', 'Render', 'Heroku', 'AWS EC2']
+    skills: ['Azure', 'IIS 10', 'Cloudflare', 'Netlify', 'Render', 'Heroku', 'AWS EC2']
   },
   {
     id: 'databases',
@@ -214,11 +236,15 @@ export const skillCategories = [
     title: 'Virtualization & Homelab',
     skills: [
       'Proxmox VE + clusters',
-      'TrueNAS SCALE CE',
+      'TrueNAS CE',
       'Kubernetes',
       'Talos Linux',
       'Sidero Omni',
       'Flux CD (GitOps)',
+      'Cilium (eBPF networking)',
+      'Traefik',
+      'SOPS + age secrets',
+      'Renovate',
       'Docker + Podman + Compose',
       'Portainer'
     ]

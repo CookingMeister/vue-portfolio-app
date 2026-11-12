@@ -41,7 +41,7 @@ const currentYear = new Date().getFullYear()
   padding: 2rem 0;
   text-align: center;
   font-size: 85%;
-  background-image: url('/img/Designer.png');
+  background-image: url('/img/Designer.webp');
   background-position: center;
 }
 

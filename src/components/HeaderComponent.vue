@@ -93,7 +93,7 @@ onUnmounted(() => {
   width: 100%;
   padding: 26px 1rem;
   font-weight: 500;
-  background-image: url('/img/Designer.png');
+  background-image: url('/img/Designer.webp');
   background-position: center;
 }
 

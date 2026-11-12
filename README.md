@@ -52,8 +52,10 @@ or editing the skill list means changing that one file — no template edits.
 npm install
 ```
 
-Requires Node `^20.19.0 || >=22.12.0` (Vite 8). Node 24.15+ is recommended so `jsdom` can be
-bumped past v29. `package-lock.json` is committed so `npm ci` gives reproducible builds in CI
+Requires Node 26 LTS, v26.13.1 or later. That release has the November 2026 security fixes, and
+the minimum is set in the `engines` field of `package.json`. With
+[nvm-windows](https://github.com/coreybutler/nvm-windows), run `nvm install 26.13.1`, then
+`nvm use 26.13.1`. `package-lock.json` is committed, so `npm ci` gives reproducible builds in CI
 and in the Docker image.
 
 ### Compile and Hot-Reload for Development
@@ -175,13 +177,18 @@ present but commented out; enable it once HTTPS is confirmed working, since brow
 
 ### Docker
 
-The image builds the site and serves it from nginx. The Node stage is discarded, so the
-published image is nginx plus `dist/`.
+The image builds the site on `node:26-alpine` and serves it from `nginx:1.30-alpine-slim`
+(nginx's stable line, without the njs, xslt and geoip modules). The Node stage is discarded, so
+the published image is nginx plus `dist/`.
 
 ```sh
-docker compose --profile prod up -d --build   # http://localhost:8080
-docker compose --profile dev  up              # Vite dev server on :5173
+docker compose --profile prod build --pull    # fetch patched base images first
+docker compose --profile prod up -d           # http://localhost:8080
+docker compose --profile dev  up --build      # Vite dev server on :5173
 ```
+
+Both base tags float within their release line, so a rebuild with `--pull` picks up Node and
+nginx security patches.
 
 ### Traefik
 
@@ -199,11 +206,12 @@ Use Full (strict) SSL mode so Cloudflare verifies the origin certificate.
 
 ### Technologies Used
 
+- Node.js 26 LTS
 - Vue.js 3 + Vue Router 5
 - Vite 8
 - Bootstrap 5
 - Roboto, self-hosted via `@fontsource-variable/roboto` (no font CDN)
-- Vitest for unit and integration testing
+- Vitest 5 with jsdom for unit and integration testing
 - ESLint (flat config) + Prettier
 - Docker and Docker Compose
 

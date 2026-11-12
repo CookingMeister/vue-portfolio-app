@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=26.13.1"
+  },
   "scripts": {
     "dev": "vite",
     "dev:docker": "vite --host 0.0.0.0",
@@ -19,21 +22,21 @@
   },
   "dependencies": {
     "@fontsource-variable/roboto": "^5.3.0",
-    "bootstrap": "^5.3.8",
-    "vue": "^3.5.42",
-    "vue-router": "^5.3.0"
+    "bootstrap": "^5.3.9",
+    "vue": "^3.5.45",
+    "vue-router": "^5.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@vitejs/plugin-vue": "^6.0.8",
+    "@vitejs/plugin-vue": "^6.0.11",
     "@vue/eslint-config-prettier": "^10.2.0",
-    "@vue/test-utils": "^2.5.0",
-    "eslint": "^10.9.1",
-    "eslint-plugin-vue": "^10.10.0",
-    "globals": "^17.11.0",
-    "jsdom": "^29.1.1",
-    "prettier": "^3.9.6",
-    "vite": "^8.2.2",
-    "vitest": "^4.1.11"
+    "@vue/test-utils": "^2.5.1",
+    "eslint": "^10.14.0",
+    "eslint-plugin-vue": "^10.12.1",
+    "globals": "^17.14.0",
+    "jsdom": "^31.0.0",
+    "prettier": "^3.10.1",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
   }
 }

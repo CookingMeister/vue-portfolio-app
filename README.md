@@ -95,17 +95,28 @@ gets a genuine 404 instead of a 200 with the home page.
 `npm run preview` reproduces exactly that locally — Vite's own SPA fallback would otherwise
 serve the root `index.html` for every path and make prerendering look broken.
 
-To add a route, add it to the route table in [`src/router/index.js`](src/router/index.js) and to
-`ROUTES` in [`scripts/prerender.mjs`](scripts/prerender.mjs).
+To add a route, add it in three places:
+
+1. The route table in [`src/router/index.js`](src/router/index.js).
+2. The route list inside `PAGES` in [`scripts/prerender.mjs`](scripts/prerender.mjs), so it gets
+   its own HTML file.
+3. `PRERENDERED_ROUTES` in [`src/__tests__/hydration.spec.js`](src/__tests__/hydration.spec.js),
+   so the hydration test covers it.
 
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-npm run test:unit
+npm run test:unit   # watch mode
+npm test            # single run, for CI
 ```
 
-Covers each component plus a routing integration suite that mounts the real app against the
-real route table and asserts on rendering, heading structure and navigation state.
+Includes component tests, a check on the site data, and three app-level suites:
+
+- **Routing:** mounts the real app against the real route table and asserts on rendering,
+  heading structure and navigation state.
+- **Head tags:** checks each route's canonical URL, description and Open Graph tags, that the
+  404 page is `noindex`, and that tags update in place on client-side navigation.
+- **Hydration:** checks that each prerendered route hydrates without a mismatch.
 
 ### Lint with [ESLint](https://eslint.org/)
 
@@ -117,8 +128,23 @@ Uses flat config ([`eslint.config.js`](eslint.config.js)), required from ESLint 
 
 ### Updating your resume
 
-The download button points at `/resume.pdf`, a version-neutral path. Drop a current PDF at
-`public/resume.pdf` to update it — no code change needed.
+The download button points at `/resume.pdf`, a version-neutral path. That PDF is generated from
+[`resume/resume.html`](resume/resume.html). To update it, edit the HTML and run:
+
+```sh
+npm run resume
+```
+
+This prints the page to `public/resume.pdf` with headless Chrome or Edge, so the PDF keeps a
+real, selectable text layer that applicant tracking systems can parse. No extra browser
+dependency is installed. If the script can't find Chrome or Edge, set `CHROME_PATH`:
+
+```sh
+CHROME_PATH="/path/to/chrome" npm run resume
+```
+
+Commit the regenerated `public/resume.pdf`. The site build copies it as-is and doesn't run
+this step.
 
 ## Deployment
 

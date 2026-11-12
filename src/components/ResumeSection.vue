@@ -5,39 +5,35 @@
       <h1 class="fs-2 section-title">Resume</h1>
       <div class="section-rule"></div>
 
-      <Transition name="fade" appear>
+      <div class="resume__top">
         <div>
-          <div class="resume__top">
-            <div>
-              <TerminalCard :facts="whoami" />
-              <DownloadLink class="resume__download" />
-            </div>
-
-            <div>
-              <!-- The prompt is what is seen; the plain heading is what is announced. -->
-              <h2 class="prompt-heading">
-                <span aria-hidden="true">$ git log --career</span>
-                <span class="visually-hidden">Experience and education</span>
-              </h2>
-              <CareerLog :entries="career" />
-            </div>
-          </div>
-
-          <h2 class="prompt-heading">
-            <span aria-hidden="true">$ skills --list</span>
-            <span class="visually-hidden">Skills</span>
-          </h2>
-
-          <ul class="skill-list list-unstyled">
-            <SkillList
-              v-for="category in skillCategories"
-              :key="category.id"
-              :title="category.title"
-              :skills="category.skills"
-            />
-          </ul>
+          <TerminalCard :facts="whoami" />
+          <DownloadLink class="resume__download" />
         </div>
-      </Transition>
+
+        <div>
+          <!-- The prompt is what is seen; the plain heading is what is announced. -->
+          <h2 class="prompt-heading">
+            <span aria-hidden="true">$ git log --career</span>
+            <span class="visually-hidden">Experience and education</span>
+          </h2>
+          <CareerLog :entries="career" />
+        </div>
+      </div>
+
+      <h2 class="prompt-heading">
+        <span aria-hidden="true">$ skills --list</span>
+        <span class="visually-hidden">Skills</span>
+      </h2>
+
+      <ul class="skill-list list-unstyled">
+        <SkillList
+          v-for="category in skillCategories"
+          :key="category.id"
+          :title="category.title"
+          :skills="category.skills"
+        />
+      </ul>
     </div>
   </section>
 </template>
@@ -75,15 +71,5 @@ import { career, skillCategories, whoami } from '@/data/site.js'
   margin: 0;
   /* Matching rules close the list and keep the flat layout visually anchored. */
   border-top: var(--border-hairline);
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity var(--dur-slow) var(--ease);
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 </style>

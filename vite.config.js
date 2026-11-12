@@ -57,6 +57,11 @@ function servePrerenderedRoutes() {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue(), servePrerenderedRoutes()],
+  build: {
+    // Prerendered routes need their styles before JavaScript loads. One small
+    // shared stylesheet covers every page; route JavaScript remains lazy-loaded.
+    cssCodeSplit: false
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

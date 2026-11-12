@@ -79,6 +79,11 @@ Three steps, run in order by the `build` script:
 3. `prerender` — renders each route and writes `dist/index.html`, `dist/portfolio/index.html`
    and so on, then deletes the SSR bundle.
 
+CSS splitting is disabled in `vite.config.js`: every page links to one shared stylesheet,
+including the styles for lazy-loaded routes. Prerendered content is therefore styled before
+JavaScript loads and remains styled with JavaScript disabled. Route JavaScript is still split
+into lazy-loaded chunks.
+
 Output lands in `dist/` as plain files, with no host-specific config:
 
 ```text

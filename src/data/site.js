@@ -42,7 +42,7 @@ export const about = {
   paragraphs: [
     'I came to this career sideways. Before writing software I ran kitchens as a head chef, and the habits came with me: work clean, respect the timing, and never send out something you would not happily eat yourself. That is where the name fullstackchef.dev comes from.',
 
-    'I work across both legacy and modern codebases - PHP, JavaScript, C, C++, and PL/B including Visual PL/B. Much of my work is on the PL/B language runtime itself - a long-lived C and C++ codebase, where every change is inherited by all applications written in the language. The rest is modernization: taking sites that have been running for decades and rewriting, refactoring, or rebuilding them to client specification. I have delivered three of those end to end, running on Azure and IIS 10.',
+    'I work across both legacy and modern codebases - PHP, JavaScript, C, C++, and PL/B including Visual PL/B. Much of my work is on the PL/B language runtime itself - a long-lived C and C++ codebase, where every change is inherited by all applications written in the language. The rest is modernization: taking sites that have been running for decades and rewriting, refactoring, or rebuilding them to client specification. I have delivered three of those end to end, running on IIS 10.',
 
     'Most recently I wrote a regex engine in C for the PL/B runtime - a lighter alternative to PCRE2 that still supports grouping, backtracking, and replacement.',
 
@@ -54,15 +54,21 @@ export const about = {
   }
 }
 
-/** `links: []` marks closed-source work; those cards render without a link row. */
+/** Link text for each project link type, shared by the cards and the earlier-work list. */
+export const linkLabels = { github: 'Source', demo: 'Live demo', site: 'Live site' }
+
+/**
+ * `links: []` marks closed-source work; those cards render without a link row.
+ * `earlier: true` moves a project to the compact "Earlier work" list.
+ */
 export const projects = [
   {
     id: 'plb-regex-engine',
     title: 'PL/B Regex Engine',
     description:
       'A regular expression engine written from scratch in C for the PL/B language runtime, ' +
-      'exposed to PL/B programs as a REGEX object with match, search, count, replace and ' +
-      'split methods. It supports capture groups, backreferences, lazy quantifiers, POSIX ' +
+      'exposed to PL/B programs as a REGEX object. Its fifteen methods cover compiling, ' +
+      'testing, matching, searching, counting, replacing and splitting. It supports capture groups, backreferences, lazy quantifiers, POSIX ' +
       'classes and multiline matching, with a bounded backtracking stack so a runaway ' +
       'pattern raises an error and never hangs the runtime.',
     tags: ['C', 'C++', 'PL/B', 'Parsing', 'Backtracking'],
@@ -75,9 +81,8 @@ export const projects = [
     title: 'Legacy Site Modernization',
     description:
       'Three client websites dating back to 1992, rebuilt from the ground up: restructured, ' +
-      'reworded and restyled as fast, responsive static sites. Each ships with matching ' +
-      'configuration for IIS 10 and Azure Static Web Apps, covering security headers, ' +
-      'caching and HTTPS.',
+      'reworded and restyled as fast, responsive static sites. They run on an IIS 10 server at the client, ' +
+      'and each also carries matching configuration for Azure Static Web Apps.',
     tags: ['HTML', 'Tailwind CSS', 'JavaScript', 'IIS 10', 'Azure'],
     featured: true,
     closedSource: true,
@@ -88,9 +93,9 @@ export const projects = [
     title: 'Sunbelt Computer Software Website',
     description:
       'A redesign of the website for Sunbelt Computer Software, the PL/B language development ' +
-      'and support company. It presents the Visual PL/B, Web Server, App Server and Data ' +
-      'Manager products alongside the blog, forum and support pages.',
-    tags: ['Web Design', 'Redesign', 'PL/B'],
+      'and support company, covering its products, blog and support pages. I also maintain ' +
+      'the PHP forum, which I migrated from PHP 5.4 to PHP 8.',
+    tags: ['Web Design', 'Redesign', 'PHP 8', 'PL/B'],
     image: '/img/sunbelt.webp',
     alt: 'Sunbelt Computer Software home page with a blue header and sun logo',
     featured: true,
@@ -105,6 +110,8 @@ export const projects = [
       'Sidero Omni and cluster state delivered from Git by Flux CD. Cilium handles networking ' +
       'and load balancing, SOPS and age encrypt secrets, and Renovate keeps versions current.',
     tags: ['Kubernetes', 'Talos Linux', 'Flux CD', 'Cilium', 'Proxmox VE'],
+    image: '/img/omni.webp',
+    alt: 'Sidero Omni dashboard showing one healthy cluster and three running Talos machines',
     links: [{ type: 'github', url: 'https://github.com/CookingMeister/homelab-omni-proxmox' }]
   },
   {
@@ -134,8 +141,7 @@ export const projects = [
     title: 'SimplyFit App',
     description: 'MVC fitness tracker with a REST API for creating and updating workouts.',
     tags: ['Node', 'Express', 'MVC', 'REST'],
-    image: '/img/dashboard.webp',
-    alt: 'Exercise dashboard with sections to add, update, and delete workouts',
+    earlier: true,
     // No demo: Heroku retired its free dynos.
     links: [{ type: 'github', url: 'https://github.com/CookingMeister/fitness-tracker-mvc' }]
   },
@@ -144,8 +150,7 @@ export const projects = [
     title: 'Tech Blog',
     description: '90s-themed MVC blog with authentication, posts, and threaded comments.',
     tags: ['Sequelize', 'MySQL', 'Express', 'Handlebars'],
-    image: '/img/blog.webp',
-    alt: 'Tech blog with user login and signup, post, and comment functionality',
+    earlier: true,
     // No demo: Heroku retired its free dynos.
     links: [{ type: 'github', url: 'https://github.com/CookingMeister/tech-blog-sequelize' }]
   },
@@ -154,8 +159,7 @@ export const projects = [
     title: 'Christmas Movie Generator',
     description: 'Interactive movie picker built on a third-party film API.',
     tags: ['JavaScript', 'REST API', 'CSS'],
-    image: '/img/XmasMockup.webp',
-    alt: 'Christmas movie generator with user input to generate a random movie',
+    earlier: true,
     links: [
       { type: 'demo', url: 'https://samgreenwood84.github.io/christmas-movie-generator/' },
       { type: 'github', url: 'https://github.com/CookingMeister/christmas-movie-generator' }
@@ -166,8 +170,7 @@ export const projects = [
     title: 'Weather Dashboard',
     description: 'Five-day forecast with city search and persisted recent lookups.',
     tags: ['JavaScript', 'REST API', 'localStorage'],
-    image: '/img/weather.webp',
-    alt: 'Weather dashboard with a search bar for current weather and a five-day forecast',
+    earlier: true,
     links: [
       { type: 'demo', url: 'https://cookingmeister.github.io/weather-dashboard/' },
       { type: 'github', url: 'https://github.com/CookingMeister/weather-dashboard' }

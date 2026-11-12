@@ -50,8 +50,7 @@
 
 <script setup>
 import AppIcon from './AppIcon.vue'
-
-const linkLabels = { github: 'Source', demo: 'Live demo', site: 'Live site' }
+import { linkLabels } from '@/data/site.js'
 
 defineProps({
   title: { type: String, required: true },

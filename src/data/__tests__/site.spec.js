@@ -32,7 +32,7 @@ describe('site data', () => {
   it('only uses link types the card knows how to render', () => {
     for (const project of projects) {
       for (const link of project.links) {
-        expect(['github', 'demo'], `${project.title}: ${link.type}`).toContain(link.type)
+        expect(['github', 'demo', 'site'], `${project.title}: ${link.type}`).toContain(link.type)
       }
     }
   })

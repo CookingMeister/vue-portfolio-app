@@ -35,7 +35,7 @@
             rel="noopener noreferrer"
           >
             <AppIcon :name="link.type === 'github' ? 'github' : 'external'" />
-            <span>{{ link.type === 'github' ? 'Source' : 'Live demo' }}</span>
+            <span>{{ linkLabels[link.type] }}</span>
             <span class="visually-hidden">for {{ title }} (opens in a new tab)</span>
           </a>
         </div>
@@ -51,13 +51,15 @@
 <script setup>
 import AppIcon from './AppIcon.vue'
 
+const linkLabels = { github: 'Source', demo: 'Live demo', site: 'Live site' }
+
 defineProps({
   title: { type: String, required: true },
   description: { type: String, required: true },
   image: { type: String, default: '' },
   alt: { type: String, default: '' },
   tags: { type: Array, default: () => [] },
-  /** Each entry is `{ type: 'github' | 'demo', url }`. Empty means closed source. */
+  /** Each entry is `{ type: 'github' | 'demo' | 'site', url }`. Empty means closed source. */
   links: { type: Array, default: () => [] }
 })
 </script>
@@ -65,7 +67,7 @@ defineProps({
 <style scoped>
 /*
  * Elevation changes on hover, but the card does not move: it is not itself a
- * link - only "Live demo" and "Source" inside it are - so a lift would promise
+ * link - only its links, such as "Live demo" and "Source", are - so a lift would promise
  * an affordance it does not have.
  */
 .work-card {

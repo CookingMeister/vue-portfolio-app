@@ -24,8 +24,8 @@ export const routes = [
     meta: {
       title: `Portfolio - ${site.name}`,
       description:
-        'Selected work: a regex engine in C for PL/B, legacy site modernization on Azure and ' +
-        'IIS 10, and open-source projects built with Vue, React and Node.'
+        'Selected work: a regex engine in C for PL/B, legacy site modernization, a Talos ' +
+        'Kubernetes homelab, and open-source projects built with Vue, React and Node.'
     }
   },
   {
@@ -35,8 +35,8 @@ export const routes = [
     meta: {
       title: `Resume - ${site.name}`,
       description:
-        'Skills and experience across languages, frameworks, legacy modernization, ' +
-        'databases, infrastructure and networking.'
+        'Skills across languages, frameworks, databases, infrastructure and networking, ' +
+        'plus a downloadable resume.'
     }
   },
   {

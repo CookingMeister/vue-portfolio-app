@@ -49,7 +49,7 @@ export const about = {
     'Off the clock I run a homelab on Proxmox VE, TrueNAS CE and OPNsense, with a Talos Linux Kubernetes cluster managed by GitOps. It started as a way to learn Bash, Linux and networking properly, and it keeps paying that back. When I am not in a terminal I am outdoors somewhere in the Saint John River valley.'
   ],
   portrait: {
-    src: '/img/profile.png',
+    src: '/img/profile.webp',
     alt: 'Shawn Meister smiling outdoors on a sunny day beside the water'
   }
 }
@@ -60,8 +60,11 @@ export const projects = [
     id: 'plb-regex-engine',
     title: 'PL/B Regex Engine',
     description:
-      'A regular expression engine written from scratch in C for the PL/B language runtime. ' +
-      'Lighter than PCRE2 while still supporting grouping, backtracking, and replacement.',
+      'A regular expression engine written from scratch in C for the PL/B language runtime, ' +
+      'exposed to PL/B programs as a REGEX object with match, search, count, replace and ' +
+      'split methods. It supports capture groups, backreferences, lazy quantifiers, POSIX ' +
+      'classes and multiline matching, with a bounded backtracking stack so a runaway ' +
+      'pattern raises an error and never hangs the runtime.',
     tags: ['C', 'C++', 'PL/B', 'Parsing', 'Backtracking'],
     featured: true,
     closedSource: true,
@@ -71,9 +74,11 @@ export const projects = [
     id: 'legacy-modernization',
     title: 'Legacy Site Modernization',
     description:
-      'Three client sites delivered end to end - rewrites, refactors, and ground-up builds to ' +
-      'client specification, migrating long-running code to modern standards on Azure and IIS 10.',
-    tags: ['PHP', 'JavaScript', 'Azure', 'IIS 10', 'Refactoring'],
+      'Three client websites dating back to 1992, rebuilt from the ground up: restructured, ' +
+      'reworded and restyled as fast, responsive static sites. Each ships with matching ' +
+      'configuration for IIS 10 and Azure Static Web Apps, covering security headers, ' +
+      'caching and HTTPS.',
+    tags: ['HTML', 'Tailwind CSS', 'JavaScript', 'IIS 10', 'Azure'],
     featured: true,
     closedSource: true,
     links: []
@@ -86,6 +91,8 @@ export const projects = [
       'and support company. It presents the Visual PL/B, Web Server, App Server and Data ' +
       'Manager products alongside the blog, forum and support pages.',
     tags: ['Web Design', 'Redesign', 'PL/B'],
+    image: '/img/sunbelt.webp',
+    alt: 'Sunbelt Computer Software home page with a blue header and sun logo',
     featured: true,
     closedSource: true,
     links: [{ type: 'site', url: 'https://www.sunbelt-plb.net/' }]
@@ -115,7 +122,7 @@ export const projects = [
     title: 'Music Festival Wear',
     description: 'MERN stack e-commerce application with a product catalogue and cart.',
     tags: ['MongoDB', 'Express', 'React', 'Node'],
-    image: '/img/festival.png',
+    image: '/img/festival.webp',
     alt: 'E-commerce landing page with logo and best-sellers carousel',
     links: [
       { type: 'demo', url: 'https://music-festival-hub.onrender.com/' },
@@ -127,7 +134,7 @@ export const projects = [
     title: 'SimplyFit App',
     description: 'MVC fitness tracker with a REST API for creating and updating workouts.',
     tags: ['Node', 'Express', 'MVC', 'REST'],
-    image: '/img/dashboard.png',
+    image: '/img/dashboard.webp',
     alt: 'Exercise dashboard with sections to add, update, and delete workouts',
     // No demo: Heroku retired its free dynos.
     links: [{ type: 'github', url: 'https://github.com/CookingMeister/fitness-tracker-mvc' }]
@@ -137,7 +144,7 @@ export const projects = [
     title: 'Tech Blog',
     description: '90s-themed MVC blog with authentication, posts, and threaded comments.',
     tags: ['Sequelize', 'MySQL', 'Express', 'Handlebars'],
-    image: '/img/blog.png',
+    image: '/img/blog.webp',
     alt: 'Tech blog with user login and signup, post, and comment functionality',
     // No demo: Heroku retired its free dynos.
     links: [{ type: 'github', url: 'https://github.com/CookingMeister/tech-blog-sequelize' }]
@@ -147,7 +154,7 @@ export const projects = [
     title: 'Christmas Movie Generator',
     description: 'Interactive movie picker built on a third-party film API.',
     tags: ['JavaScript', 'REST API', 'CSS'],
-    image: '/img/XmasMockup.png',
+    image: '/img/XmasMockup.webp',
     alt: 'Christmas movie generator with user input to generate a random movie',
     links: [
       { type: 'demo', url: 'https://samgreenwood84.github.io/christmas-movie-generator/' },
@@ -159,7 +166,7 @@ export const projects = [
     title: 'Weather Dashboard',
     description: 'Five-day forecast with city search and persisted recent lookups.',
     tags: ['JavaScript', 'REST API', 'localStorage'],
-    image: '/img/weather.png',
+    image: '/img/weather.webp',
     alt: 'Weather dashboard with a search bar for current weather and a five-day forecast',
     links: [
       { type: 'demo', url: 'https://cookingmeister.github.io/weather-dashboard/' },
@@ -193,43 +200,25 @@ export const skillCategories = [
       'Node',
       'Express',
       'Spring Boot',
-      'Apollo Server',
+      'GraphQL + Apollo Server',
       'Bootstrap',
       'Tailwind'
     ]
   },
   {
-    id: 'modernization',
-    title: 'Legacy Modernization',
-    skills: [
-      'Legacy site rewrites',
-      'Refactoring long-lived code',
-      'Client-specification builds',
-      'Responsive retrofits',
-      'Cross-browser support'
-    ]
-  },
-  {
     id: 'hosting',
     title: 'Hosting & Deployment',
-    skills: ['Azure', 'IIS 10', 'Cloudflare', 'Netlify', 'Render', 'Heroku', 'AWS EC2']
+    skills: ['Azure', 'IIS 10', 'Cloudflare', 'Netlify', 'Render', 'AWS EC2']
   },
   {
     id: 'databases',
     title: 'Databases',
-    skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'SQLite', 'GraphQL', 'phpMyAdmin']
+    skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'SQLite']
   },
   {
     id: 'tools',
     title: 'Tools & Platforms',
-    skills: [
-      'Git + GitHub/GitLab',
-      'Vite',
-      'Webpack',
-      'Vitest + Jest',
-      'Postman + Insomnia',
-      'WAMP/XAMPP'
-    ]
+    skills: ['Git + GitHub/GitLab', 'Vite', 'Webpack', 'Vitest + Jest', 'Postman + Insomnia']
   },
   {
     id: 'infrastructure',
@@ -245,8 +234,7 @@ export const skillCategories = [
       'Traefik',
       'SOPS + age secrets',
       'Renovate',
-      'Docker + Podman + Compose',
-      'Portainer'
+      'Docker + Podman + Compose'
     ]
   },
   {
@@ -266,8 +254,15 @@ export const skillCategories = [
   },
   {
     id: 'ai',
-    title: 'AI & Machine Learning',
-    skills: ['Ollama', 'OpenWebUI', 'Claude (Code)', 'ChatGPT', 'Qwen', 'Gemma', 'Pi Agent']
+    title: 'AI Tooling',
+    skills: [
+      'Claude Code',
+      'ChatGPT',
+      'Ollama',
+      'OpenWebUI',
+      'Local models (Qwen, Gemma)',
+      'Pi Agent'
+    ]
   }
 ]
 

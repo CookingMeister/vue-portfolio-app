@@ -144,7 +144,8 @@ onUnmounted(() => {
   margin-left: 0.2rem;
 }
 
-.site-header__brand:hover {
+.site-header__brand:hover,
+.site-header__brand:focus-visible {
   color: var(--c-warm);
 }
 </style>

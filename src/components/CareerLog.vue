@@ -69,7 +69,6 @@ defineProps({
   margin: 0.05rem 0;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--c-cream);
 }
 
 .career__place {

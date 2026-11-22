@@ -131,7 +131,6 @@ defineProps({
 
 .work-card__desc {
   margin: 0;
-  color: var(--c-cream);
   font-size: 0.9rem;
   line-height: 1.45;
 }
@@ -171,7 +170,6 @@ defineProps({
 
 .work-card__closed {
   align-items: center;
-  color: var(--c-cream);
   font-size: 0.85rem;
   opacity: 0.75;
 }

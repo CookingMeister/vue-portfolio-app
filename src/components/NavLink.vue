@@ -30,8 +30,18 @@ defineProps({
   transition: color var(--dur-base) var(--ease);
 }
 
-.site-nav__link:hover {
+.site-nav__link:hover,
+.site-nav__link:focus-visible {
   color: var(--c-warm);
+}
+
+/* Bootstrap's `.nav-link:focus-visible` outranks the global ring and swaps it
+   for a faint blue glow; this restores the site's ring. Declared before
+   `.active` so the current page keeps its underline while focused. */
+.site-nav__link:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+  box-shadow: none;
 }
 
 /* An amber underline, like a selected tab on a terminal status line. */

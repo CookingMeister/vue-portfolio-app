@@ -64,7 +64,6 @@ import { about, site } from '@/data/site.js'
 .about {
   --portrait-size: clamp(150px, 38vw, 190px);
   padding-bottom: 4rem;
-  color: var(--c-cream);
 }
 
 .fw-500 {
@@ -86,7 +85,6 @@ import { about, site } from '@/data/site.js'
   font-family: var(--font-mono);
   font-size: clamp(0.82rem, 2.5vw, 1rem);
   line-height: 1.6;
-  color: var(--c-cream);
 }
 
 .about__cursor {
@@ -109,7 +107,6 @@ import { about, site } from '@/data/site.js'
 
 .about__meta {
   margin: 0;
-  color: var(--c-cream);
   opacity: 0.85;
   letter-spacing: 0.04em;
   font-size: 0.9rem;

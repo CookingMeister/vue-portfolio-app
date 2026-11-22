@@ -60,7 +60,6 @@
   --c-plate: #071322;
   /* Clears AA (4.5:1) as normal text at both ends of the ground gradient. */
   --c-alert: #ff7488;
-  --c-ink: #333;
 
   /* Surfaces */
   --grad-brand: linear-gradient(135deg, var(--c-ground-deep), var(--c-ground-soft));
@@ -73,6 +72,11 @@
   --border-soft: 1px solid rgba(250, 235, 215, 0.5);
   /* Shared terminal-style corners for every rectangular surface and control. */
   --radius-key: 5px;
+
+  /* Keyboard focus ring, shared by the global rule and any component that has
+     to restate it over a Bootstrap default. */
+  --focus-ring: 3px solid var(--c-accent);
+  --focus-ring-offset: 3px;
 
   /* Type */
   --font-body: 'Roboto Variable', Roboto, system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -118,20 +122,24 @@ html {
  *
  * `fixed` keeps it still while the page scrolls, so it reads as one continuous
  * backdrop rather than restarting per section.
+ *
+ * Cream on navy is the default for the whole document, replacing Bootstrap's
+ * light-theme dark text on white, so anything outside a section stays legible.
  */
 body {
   margin: 0;
   padding: 0;
-  color: var(--c-ink);
+  color: var(--c-cream);
   font-family: var(--font-body);
+  background-color: var(--c-ground-deep);
   background-image: var(--grad-brand);
   background-attachment: fixed;
 }
 
 /* A visible focus ring on every interactive element, for keyboard users. */
 :focus-visible {
-  outline: 3px solid var(--c-accent);
-  outline-offset: 3px;
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
   border-radius: var(--radius-key);
 }
 
@@ -176,7 +184,6 @@ body {
 
 .section-title {
   margin: 0 0 1.25rem;
-  color: var(--c-cream);
   text-shadow: var(--text-shadow-title);
   letter-spacing: 0.01em;
 }

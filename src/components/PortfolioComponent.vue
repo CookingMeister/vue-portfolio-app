@@ -89,13 +89,11 @@ const earlier = projects.filter((project) => project.earlier)
 <style scoped>
 .portfolio__subhead {
   margin: 0;
-  color: var(--c-cream);
   text-shadow: var(--text-shadow-title);
 }
 
 .portfolio__note {
   margin: 0.4rem 0 0;
-  color: var(--c-cream);
   opacity: 0.85;
   font-size: 0.95rem;
 }
@@ -135,13 +133,11 @@ const earlier = projects.filter((project) => project.earlier)
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--c-cream);
 }
 
 .earlier__desc {
   margin: 0.15rem 0 0;
   font-size: 0.9rem;
-  color: var(--c-cream);
   opacity: 0.85;
 }
 

@@ -44,7 +44,7 @@
             <span class="visually-hidden">Career highlights</span>
           </h2>
           <ul class="about__highlight-list list-unstyled">
-            <li v-for="highlight in about.highlights" :key="highlight.value">
+            <li v-for="highlight in about.highlights" :key="highlight.value" class="plate">
               <strong>{{ highlight.value }}</strong>
               <span>{{ highlight.label }}</span>
             </li>
@@ -150,11 +150,6 @@ import { about, site } from '@/data/site.js'
   font-size: 0.78rem;
   font-weight: 500;
   line-height: 1.5;
-  color: var(--c-cream);
-  background:
-    repeating-linear-gradient(rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px), var(--c-plate);
-  border: 1px solid rgba(255, 179, 71, 0.38);
-  border-radius: var(--radius-key);
 }
 
 .about__highlight-list strong {

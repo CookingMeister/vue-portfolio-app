@@ -4,7 +4,7 @@
     cursor are decoration and hidden from assistive tech; the facts are a real
     description list.
   -->
-  <div class="terminal">
+  <div class="terminal plate">
     <div class="terminal__bar" aria-hidden="true">
       <i></i><i></i><i></i>
       <span>{{ host }}: ~</span>
@@ -45,13 +45,8 @@ const host = `${site.name.split(' ')[0].toLowerCase()}@${site.brand}`
   font-size: 0.85rem;
   font-weight: 500;
   line-height: 1.75;
-  color: var(--c-cream);
-  /* The same CRT plate and phosphor edge as the header. */
-  background:
-    repeating-linear-gradient(rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 3px), var(--c-plate);
-  border: 1px solid rgba(255, 179, 71, 0.45);
-  border-radius: var(--radius-key);
-  box-shadow: 0 0 22px rgba(255, 179, 71, 0.12);
+  /* The surface is `.plate`; the glow marks this one as a live window. */
+  box-shadow: 0 0 22px color-mix(in srgb, var(--c-warm) 12%, transparent);
 }
 
 .terminal__bar {
@@ -60,14 +55,14 @@ const host = `${site.name.split(' ')[0].toLowerCase()}@${site.brand}`
   gap: 0.45rem;
   padding: 0.5rem 0.75rem;
   font-size: 0.75rem;
-  background: #0c2038;
+  background: var(--c-plate-raised);
   border-bottom: var(--border-hairline);
 }
 
 .terminal__bar i {
   width: 9px;
   height: 9px;
-  background: rgba(250, 235, 215, 0.3);
+  background: var(--c-cream-muted);
   border-radius: 50%;
 }
 

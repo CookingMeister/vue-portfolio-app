@@ -43,8 +43,8 @@ defineProps({
 /* Resume tags are intentionally quieter than project tags: they organize a
    dense reference list rather than advertising individual technologies. */
 .chip {
-  background: rgba(0, 0, 0, 0.16);
-  border-color: rgba(250, 235, 215, 0.2);
+  background: var(--surface-sunken-faint);
+  border-color: var(--c-cream-faint);
 }
 
 /* Label moves into its own column, so each category reads as one line. */

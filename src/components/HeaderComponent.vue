@@ -98,16 +98,15 @@ onUnmounted(() => {
   padding: 26px 1rem;
   font-weight: 500;
   /* A CRT plate: faint scanlines, with an amber phosphor edge along the bottom. */
-  background:
-    repeating-linear-gradient(rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px), var(--c-plate);
-  border-bottom: 1px solid rgba(255, 179, 71, 0.55);
-  box-shadow: 0 1px 14px rgba(255, 179, 71, 0.22);
+  background: var(--scanlines), var(--c-plate);
+  border-bottom: 1px solid color-mix(in srgb, var(--c-warm) 55%, transparent);
+  box-shadow: 0 1px 14px color-mix(in srgb, var(--c-warm) 22%, transparent);
   transition: box-shadow var(--dur-base) var(--ease);
 }
 
 /* The glow strengthens once the page scrolls beneath the header. */
 .site-header--scrolled {
-  box-shadow: 0 2px 22px rgba(255, 179, 71, 0.35);
+  box-shadow: 0 2px 22px color-mix(in srgb, var(--c-warm) 35%, transparent);
 }
 
 .site-header__brand {

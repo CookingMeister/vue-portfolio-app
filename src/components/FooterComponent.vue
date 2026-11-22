@@ -56,11 +56,12 @@ const currentYear = new Date().getFullYear()
 
 /* Dusk sky behind the SVG: navy overhead, warming to plum at the horizon.
    The height follows the drawing's 6:1 shape, so wide screens show the whole
-   sun; below the minimum the SVG crops its sides instead of shrinking. */
+   sun; below the minimum the SVG crops its sides instead of shrinking.
+   The dusk stops are illustration colours, exempt from the token rule. */
 .site-footer__scene {
   height: clamp(150px, 16.67vw, 280px);
   overflow: hidden;
-  background: linear-gradient(#0b1d36 0%, #1a2f5a 55%, #3b2a57 100%);
+  background: linear-gradient(var(--c-ground-deep) 0%, #1a2f5a 55%, #3b2a57 100%);
 }
 
 .site-footer__status {
@@ -90,7 +91,7 @@ const currentYear = new Date().getFullYear()
 }
 
 .site-footer__segment--path {
-  background: #10294a;
+  background: var(--c-plate-raised);
 }
 
 .site-footer__copy {

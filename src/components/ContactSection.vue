@@ -12,7 +12,12 @@
 
         <ul class="list-unstyled d-flex flex-column gap-4 mb-0">
           <li v-for="link in socialLinks" :key="link.id">
-            <a class="contact-card" :href="link.url" target="_blank" rel="noopener noreferrer">
+            <a
+              class="contact-card plate"
+              :href="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <AppIcon :name="link.icon" size="2rem" class="contact-card__icon" />
               <span class="contact-card__text">
                 <span class="contact-card__name">{{ link.name }}</span>
@@ -60,12 +65,7 @@ import { socialLinks, websiteServices } from '@/data/site.js'
   align-items: center;
   gap: 1.25rem;
   padding: 1.5rem;
-  color: var(--c-cream);
   text-decoration: none;
-  background:
-    repeating-linear-gradient(rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px), var(--c-plate);
-  border: 1px solid rgba(255, 179, 71, 0.38);
-  border-radius: var(--radius-key);
   transition: border-color var(--dur-fast) var(--ease);
 }
 

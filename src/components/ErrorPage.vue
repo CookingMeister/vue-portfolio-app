@@ -31,7 +31,7 @@ import { RouterLink } from 'vue-router'
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--c-warm);
-  text-shadow: 0 0 24px rgba(255, 179, 71, 0.45);
+  text-shadow: 0 0 24px color-mix(in srgb, var(--c-warm) 45%, transparent);
 }
 
 .error-page__lead {

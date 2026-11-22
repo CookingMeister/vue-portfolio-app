@@ -26,7 +26,7 @@ defineProps({
 .career {
   margin: 0;
   padding-left: 1.25rem;
-  border-left: 1px solid rgba(250, 235, 215, 0.25);
+  border-left: 1px solid var(--c-cream-muted);
 }
 
 .career__entry {
@@ -48,7 +48,8 @@ defineProps({
   content: '';
   background: var(--c-warm);
   border-radius: 50%;
-  box-shadow: 0 0 0 3px #10294a;
+  /* A ring in the page's own colour cuts the line around each dot. */
+  box-shadow: 0 0 0 3px var(--c-ground-mid);
 }
 
 /* The years before software: the same line, an open dot. */

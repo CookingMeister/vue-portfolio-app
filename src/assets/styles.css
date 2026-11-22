@@ -36,7 +36,13 @@
 /* ==========================================================================
    Design tokens
    Every colour, gradient and timing used by the site is declared once here.
-   Components reference the token, never the literal value.
+   Components reference the token, never the literal value. A one-off tint is
+   derived in place - color-mix(in srgb, var(--c-warm) 45%, transparent) - so
+   it still follows the palette.
+
+   The one exception is the footer's dusk illustration (the sky in
+   FooterComponent.vue and the drawing in FooterLandscape.vue). It keeps its
+   own colours, but uses these tokens wherever it repeats a brand colour.
    ========================================================================== */
 
 :root {
@@ -47,6 +53,8 @@
      kept flat in luminance so cream and cyan both clear AA at either end. */
   --c-ground-deep: #0a1a2f;
   --c-ground-soft: #14375e;
+  /* Halfway along the ground gradient, for anything that has to blend into it. */
+  --c-ground-mid: color-mix(in srgb, var(--c-ground-deep), var(--c-ground-soft));
   --c-cream: antiquewhite;
   --c-accent: #0dcaf0;
   /* Phosphor amber: the one warm colour. It marks state - hover, the current
@@ -56,20 +64,31 @@
   /* The darker side of a keycap, under each face colour. */
   --c-accent-edge: #0787a1;
   --c-warm-edge: #b9741d;
+  --c-plate-edge: rgba(0, 0, 0, 0.55);
   /* The header and status bar sit on a darker plate than the page ground. */
   --c-plate: #071322;
-  /* Clears AA (4.5:1) as normal text at both ends of the ground gradient. */
-  --c-alert: #ff7488;
+  /* A raised segment on the plate: window title bars, status-line segments. */
+  --c-plate-raised: #10294a;
+
+  /* Cream at fixed strengths, for lines and outlines on the dark ground. */
+  --c-cream-faint: color-mix(in srgb, var(--c-cream) 14%, transparent);
+  --c-cream-muted: color-mix(in srgb, var(--c-cream) 28%, transparent);
+  --c-cream-soft: color-mix(in srgb, var(--c-cream) 50%, transparent);
 
   /* Surfaces */
   --grad-brand: linear-gradient(135deg, var(--c-ground-deep), var(--c-ground-soft));
-  --surface-scrim: rgba(0, 0, 0, 0.55);
   --surface-sunken: rgba(0, 0, 0, 0.3);
-  /* Faint divider for flat, card-free lists. */
-  --border-hairline: 1px solid rgba(250, 235, 215, 0.14);
+  --surface-sunken-faint: rgba(0, 0, 0, 0.16);
+  /* Faint CRT scanlines, layered over a plate colour. */
+  --scanlines: repeating-linear-gradient(rgba(255, 255, 255, 0.03) 0 1px, transparent 1px 3px);
 
   /* Borders + edges */
-  --border-soft: 1px solid rgba(250, 235, 215, 0.5);
+  /* Faint divider for flat, card-free lists. */
+  --border-hairline: 1px solid var(--c-cream-faint);
+  /* The stronger rule under each page title. */
+  --border-soft: 1px solid var(--c-cream-soft);
+  /* The phosphor edge around every terminal plate. */
+  --border-plate: 1px solid color-mix(in srgb, var(--c-warm) 38%, transparent);
   /* Shared terminal-style corners for every rectangular surface and control. */
   --radius-key: 5px;
 
@@ -91,7 +110,6 @@
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --dur-fast: 0.2s;
   --dur-base: 0.3s;
-  --dur-slow: 0.7s;
 
   /* Layout */
   /* Fallback only - HeaderComponent overwrites this with the measured height. */
@@ -189,8 +207,7 @@ body {
 }
 
 .section-rule {
-  border-top: 1px solid var(--c-cream);
-  opacity: 0.6;
+  border-top: var(--border-soft);
   margin: 0 0 2.5rem;
 }
 
@@ -224,6 +241,15 @@ body {
   aspect-ratio: 1 / 1;
 }
 
+/* A terminal plate: the dark CRT surface behind cards and windows, with a
+   phosphor edge. The header lays the same scanlines over a full-width bar. */
+.plate {
+  color: var(--c-cream);
+  background: var(--scanlines), var(--c-plate);
+  border: var(--border-plate);
+  border-radius: var(--radius-key);
+}
+
 /* Small squared tag, shared by resume skills and project tech tags. */
 .chip {
   display: inline-block;
@@ -234,7 +260,7 @@ body {
   line-height: 1.6;
   color: var(--c-cream);
   background: var(--surface-sunken);
-  border: 1px solid rgba(250, 235, 215, 0.28);
+  border: 1px solid var(--c-cream-muted);
   border-radius: var(--radius-key);
 }
 
@@ -285,8 +311,8 @@ body {
 .keycap--alt {
   color: var(--c-cream);
   background: var(--c-plate);
-  border-color: rgba(250, 235, 215, 0.45);
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.55);
+  border-color: var(--c-cream-soft);
+  box-shadow: 0 4px 0 var(--c-plate-edge);
 }
 
 .keycap--alt:hover,
@@ -294,11 +320,11 @@ body {
   color: var(--c-warm);
   background: var(--c-plate);
   border-color: var(--c-warm);
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.55);
+  box-shadow: 0 4px 0 var(--c-plate-edge);
 }
 
 .keycap--alt:active {
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0.55);
+  box-shadow: 0 0 0 var(--c-plate-edge);
 }
 
 /* A terminal's block cursor. `steps(1)` gives a hard blink, not a fade; under
@@ -309,7 +335,7 @@ body {
   height: 1.05em;
   vertical-align: -0.18em;
   background: var(--c-warm);
-  box-shadow: 0 0 10px rgba(255, 179, 71, 0.7);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--c-warm) 70%, transparent);
   animation: cursor-blink 1.1s steps(1) infinite;
 }
 

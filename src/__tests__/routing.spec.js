@@ -45,12 +45,19 @@ describe('routing', () => {
     const { wrapper } = await mountAt('/portfolio')
     const archive = wrapper.find('section[aria-labelledby="earlier-work-heading"]')
 
-    expect(archive.find('.section-path').text()).toBe('~/portfolio/archive')
-    expect(archive.find('h2').text()).toBe('Earlier work')
+    expect(archive.find('h2 [aria-hidden="true"]').text()).toBe('$ ls archive/')
+    expect(archive.find('h2 .visually-hidden').text()).toBe('Earlier work')
     expect(archive.findAll('.earlier__row')).toHaveLength(
       projects.filter((project) => project.earlier).length
     )
     expect(archive.find('.work-card').exists()).toBe(false)
+  })
+
+  it('announces plain portfolio headings, not the decorative shell prompts', async () => {
+    const { wrapper } = await mountAt('/portfolio')
+    const headings = wrapper.findAll('h2').map((h2) => h2.find('.visually-hidden').text())
+
+    expect(headings).toEqual(['Featured work', 'Open source & personal projects', 'Earlier work'])
   })
 
   it('renders the resume and contact views', async () => {

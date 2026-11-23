@@ -61,21 +61,20 @@ defineProps({
 .career__when {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   font-weight: 500;
   opacity: 0.7;
 }
 
 .career__title {
   margin: 0.05rem 0;
-  font-size: 1rem;
+  font-size: var(--fs-base);
   font-weight: 500;
 }
 
 .career__place {
   margin: 0;
-  font-size: 0.9rem;
-  font-weight: 300;
+  font-size: var(--fs-sm);
   opacity: 0.85;
 }
 </style>

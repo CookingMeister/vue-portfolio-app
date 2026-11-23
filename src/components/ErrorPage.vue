@@ -36,13 +36,13 @@ import { RouterLink } from 'vue-router'
 
 .error-page__lead {
   margin: 0.5rem 0 0.35rem;
-  font-size: 1.35rem;
+  font-size: var(--fs-lg);
 }
 
 /* The plain statement, for anyone who has never worked a line. */
 .error-page__plain {
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   font-weight: 500;
   letter-spacing: 0.02em;
   opacity: 0.75;

@@ -128,7 +128,7 @@ onUnmounted(() => {
 .site-header__name {
   margin-left: 0.6rem;
   font-family: var(--font-mono);
-  font-size: 1.3rem;
+  font-size: var(--fs-lg);
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.01em;

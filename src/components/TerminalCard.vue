@@ -42,7 +42,7 @@ const host = `${site.name.split(' ')[0].toLowerCase()}@${site.brand}`
 .terminal {
   overflow: hidden;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   font-weight: 500;
   line-height: 1.75;
   /* The surface is `.plate`; the glow marks this one as a live window. */
@@ -54,7 +54,7 @@ const host = `${site.name.split(' ')[0].toLowerCase()}@${site.brand}`
   align-items: center;
   gap: 0.45rem;
   padding: 0.5rem 0.75rem;
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   background: var(--c-plate-raised);
   border-bottom: var(--border-hairline);
 }

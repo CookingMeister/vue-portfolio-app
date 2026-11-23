@@ -28,7 +28,7 @@ defineProps({
 .skill-row__label {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   font-weight: 500;
   color: var(--c-warm);
 }

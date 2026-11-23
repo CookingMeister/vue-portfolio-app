@@ -104,6 +104,14 @@
   --font-mono:
     'IBM Plex Mono', ui-monospace, 'Cascadia Code', 'Cascadia Mono', Consolas, 'Courier New',
     monospace;
+  /* Type scale: tags and labels, secondary text, prose, card names, then the
+     brand and lead lines. Page titles keep Bootstrap's responsive heading
+     sizes, and the 404 code sets its own display size. */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.25rem;
   --text-shadow-title: 1px 1px 3px black;
 
   /* Motion */
@@ -185,7 +193,7 @@ body {
 .section-path {
   margin: 0 0 0.35rem;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   font-weight: 500;
   color: var(--c-warm);
 }
@@ -194,7 +202,7 @@ body {
 .prompt-heading {
   margin: 0 0 0.9rem;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--c-accent);
@@ -235,10 +243,13 @@ body {
    Components
    ========================================================================== */
 
-.profile-pic {
-  border: solid 6px var(--c-cream);
-  object-fit: cover;
-  aspect-ratio: 1 / 1;
+/* Long-form paragraphs. The light weight is kept to base size and up: smaller
+   secondary text stays at the regular weight so it holds up on the dark ground. */
+.prose {
+  font-size: var(--fs-base);
+  font-weight: 300;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
 }
 
 /* A terminal plate: the dark CRT surface behind cards and windows, with a
@@ -255,7 +266,7 @@ body {
   display: inline-block;
   padding: 0.15rem 0.55rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   font-weight: 500;
   line-height: 1.6;
   color: var(--c-cream);
@@ -275,7 +286,7 @@ body {
   align-items: center;
   padding: 0.6rem 1.1rem;
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   font-weight: 500;
   line-height: 1.2;
   color: var(--c-plate);

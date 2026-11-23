@@ -69,7 +69,7 @@ const currentYear = new Date().getFullYear()
   flex-wrap: wrap;
   align-items: stretch;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: var(--fs-xs);
   font-weight: 500;
   color: var(--c-cream);
   background: var(--c-plate);

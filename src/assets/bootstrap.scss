@@ -1,0 +1,53 @@
+// Bootstrap, trimmed to the parts this site uses (about 44 KB, against 232 KB for
+// the full build). Imported by main.js ahead of styles.css, so the site's own
+// rules still win on equal specificity.
+//
+// Using a Bootstrap class that is not listed below? Add the partial it lives in,
+// or its key in `$utilities`, or the class will silently have no styles.
+//
+// Bootstrap 5.3 is written with `@import`, which Sass has deprecated; the
+// resulting warnings are silenced in vite.config.js. Keep `sass` on 1.x (it is
+// pinned) until Bootstrap ships a `@use` build.
+
+@import 'bootstrap/scss/functions';
+
+// Overrides go after the functions and before the variables.
+// Nav pills take the site's corner radius instead of Bootstrap's 6px.
+$nav-pills-border-radius: var(--radius-key);
+
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+
+// Only the utility classes the templates use:
+//   d-flex, flex-column, align-items-stretch, gap-*, mb-*, pb-*, px-*,
+//   text-center, fw-medium, fs-*, h-100, rounded-circle.
+$utilities: map-get-multiple(
+  $utilities,
+  (
+    'display',
+    'flex-direction',
+    'align-items',
+    'gap',
+    'margin-bottom',
+    'padding-bottom',
+    'padding-x',
+    'text-align',
+    'font-weight',
+    'font-size',
+    'height',
+    'rounded'
+  )
+);
+
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/type'; // headings, .display-*, .list-unstyled
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/grid'; // .row, .col, .row-cols-*, .g-*
+@import 'bootstrap/scss/nav'; // .nav, .nav-pills, .nav-link
+@import 'bootstrap/scss/helpers/visually-hidden';
+
+@import 'bootstrap/scss/utilities/api';

@@ -1,5 +1,6 @@
 // Bootstrap first so our own tokens and component styles override its defaults.
-import 'bootstrap/dist/css/bootstrap.min.css'
+// A trimmed build of the parts the site uses; see the file for how to add more.
+import './assets/bootstrap.scss'
 import './assets/styles.css'
 
 import { createWebHistory } from 'vue-router'

@@ -55,9 +55,9 @@ import { socialLinks, websiteServices } from '@/data/site.js'
 </script>
 
 <style scoped>
+/* A readable measure, aligned to the page title's left edge like every other page. */
 .contact__content {
   max-width: 48rem;
-  margin-inline: auto;
 }
 
 .contact-card {

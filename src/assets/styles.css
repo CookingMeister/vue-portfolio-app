@@ -1,18 +1,20 @@
 /* ==========================================================================
    Fonts
 
-   Roboto self-hosted from `@fontsource-variable/roboto` (Apache-2.0): no
-   third-party request on first paint and no visitor IP handed to another origin.
-   One variable file covers every weight the site uses. Only the latin subset is
-   declared; the package's other eight would be emitted into `dist/` unserved.
+   IBM Plex Sans self-hosted from `@fontsource-variable/ibm-plex-sans` (OFL-1.1):
+   no third-party request on first paint and no visitor IP handed to another
+   origin. It is the sans of the same family as IBM Plex Mono below, so prose and
+   terminal text read as one voice. One variable file covers every weight the
+   site uses (100-700). Only the latin subset is declared; the package's others
+   would be emitted into `dist/` unserved.
    ========================================================================== */
 
 @font-face {
-  font-family: 'Roboto Variable';
+  font-family: 'IBM Plex Sans Variable';
   font-style: normal;
   font-display: swap;
-  font-weight: 100 900;
-  src: url('@fontsource-variable/roboto/files/roboto-latin-wght-normal.woff2')
+  font-weight: 100 700;
+  src: url('@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-normal.woff2')
     format('woff2-variations');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
@@ -20,7 +22,7 @@
 }
 
 /* IBM Plex Mono (OFL-1.1), self-hosted the same way. A terminal face with
-   typewriter roots, for the brand, the footer status bar and the 404 page.
+   typewriter roots, for the brand, prompts, chips, the footer status bar and 404.
    Only the latin subset and one weight ship. */
 @font-face {
   font-family: 'IBM Plex Mono';
@@ -99,7 +101,8 @@
   --focus-ring-offset: 3px;
 
   /* Type */
-  --font-body: 'Roboto Variable', Roboto, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:
+    'IBM Plex Sans Variable', 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   /* Set `font-weight: 500` wherever this is used: it is the only weight shipped,
      and any other would be synthesised by the browser. */
   --font-mono:

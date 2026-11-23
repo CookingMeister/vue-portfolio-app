@@ -35,6 +35,7 @@ src/
   main.js           Browser entry — hydrates the prerendered markup
   entry-server.js   Build-time entry — renders one route to HTML
   assets/styles.css Design tokens, self-hosted font faces, layout primitives
+  assets/bootstrap.scss  The parts of Bootstrap the site uses, compiled with Sass
 scripts/
   prerender.mjs     Writes one HTML file per route into dist/
 ```
@@ -214,7 +215,8 @@ Use Full (strict) SSL mode so Cloudflare verifies the origin certificate.
 - Node.js 26 LTS
 - Vue.js 3 + Vue Router 5
 - Vite 8
-- Bootstrap 5
+- Bootstrap 5 (only the grid, reboot, type, nav and a handful of utilities, compiled with
+  Sass; see [`src/assets/bootstrap.scss`](src/assets/bootstrap.scss))
 - Roboto and IBM Plex Mono, self-hosted via `@fontsource-variable/roboto` and
   `@fontsource/ibm-plex-mono` (no font CDN)
 - Vitest 5 with jsdom for unit and integration testing

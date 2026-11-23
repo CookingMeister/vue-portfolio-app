@@ -62,6 +62,18 @@ export default defineConfig({
     // shared stylesheet covers every page; route JavaScript remains lazy-loaded.
     cssCodeSplit: false
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Bootstrap 5.3 is written with `@import` and Sass's global functions,
+        // which Dart Sass deprecates and plans to remove in 3.0. None of it is ours
+        // to fix, and it only produces build-time noise. `sass` is pinned to 1.x in
+        // package.json, so nothing breaks until that is upgraded; revisit these when
+        // Bootstrap 6 (a `@use` build) is stable.
+        silenceDeprecations: ['import', 'global-builtin', 'color-functions', 'if-function']
+      }
+    }
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

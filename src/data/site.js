@@ -52,11 +52,12 @@ export const about = {
 
     'Off the clock I run Proxmox VE, TrueNAS CE, OPNsense, and a Talos Linux Kubernetes cluster managed by GitOps. When I am not in a terminal I am outdoors somewhere in the Saint John River valley.'
   ],
+  // Shown as kitchen order tickets; `station` is the line it was cooked on.
   highlights: [
-    { value: '13 years', label: 'running professional kitchens' },
-    { value: '4 sites', label: 'from the early to mid-1990s rebuilt' },
-    { value: '15 methods', label: 'in a regex engine built in C' },
-    { value: '3 nodes', label: 'in a Talos k8s cluster' }
+    { value: '13 years', label: 'running professional kitchens', station: 'kitchen' },
+    { value: '4 sites', label: 'from the early to mid-1990s rebuilt', station: 'web' },
+    { value: '15 methods', label: 'in a regex engine built in C', station: 'runtime' },
+    { value: '3 nodes', label: 'in a Talos k8s cluster', station: 'homelab' }
   ],
   portrait: {
     src: '/img/profile.webp',

@@ -39,14 +39,27 @@
         </div>
 
         <aside class="about__highlights" aria-labelledby="highlights-heading">
+          <!-- Kitchen order tickets. "Order up" is the call that a dish is done and
+               waiting for the server: finished work, ready for the reader. -->
           <h2 id="highlights-heading" class="prompt-heading">
-            <span aria-hidden="true">$ highlights --top</span>
+            <span aria-hidden="true">$ highlights --order-up</span>
             <span class="visually-hidden">Career highlights</span>
           </h2>
           <ul class="about__highlight-list list-unstyled">
-            <li v-for="highlight in about.highlights" :key="highlight.value" class="plate">
-              <strong>{{ highlight.value }}</strong>
-              <span>{{ highlight.label }}</span>
+            <li
+              v-for="(highlight, i) in about.highlights"
+              :key="highlight.value"
+              class="plate ticket"
+            >
+              <!-- The ticket stub: its number and the station it went to. Decoration. -->
+              <p class="ticket__head" aria-hidden="true">
+                <span>#{{ String(i + 1).padStart(2, '0') }}</span>
+                <span>{{ highlight.station }}</span>
+              </p>
+              <div class="ticket__body">
+                <strong>{{ highlight.value }}</strong>
+                <span>{{ highlight.label }}</span>
+              </div>
             </li>
           </ul>
         </aside>
@@ -140,11 +153,32 @@ import { about, site } from '@/data/site.js'
   display: flex;
   flex-direction: column;
   min-height: 6.5rem;
-  padding: 1rem;
+  overflow: hidden;
   font-family: var(--font-mono);
   font-size: var(--fs-xs);
   font-weight: 500;
   line-height: 1.5;
+}
+
+/* A kitchen ticket's stub, drawn like the terminal window's title bar, with a
+   dashed tear-off line between it and the order. */
+.ticket__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+  padding: 0.3rem 1rem;
+  color: color-mix(in srgb, var(--c-cream) 65%, transparent);
+  letter-spacing: 0.04em;
+  background: var(--c-plate-raised);
+  border-bottom: 1px dashed var(--c-cream-muted);
+}
+
+.ticket__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0.75rem 1rem 1rem;
 }
 
 .about__highlight-list strong {

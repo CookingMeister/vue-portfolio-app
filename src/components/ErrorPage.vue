@@ -50,7 +50,9 @@ import { RouterLink } from 'vue-router'
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: all var(--dur-base) ease;
+  transition:
+    opacity var(--dur-base) var(--ease),
+    transform var(--dur-base) var(--ease);
 }
 
 .slide-enter-from,

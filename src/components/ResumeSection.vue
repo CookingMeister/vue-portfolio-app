@@ -1,5 +1,5 @@
 <template>
-  <section id="Resume" class="section-panel">
+  <section id="resume" class="section-panel">
     <div class="container px-4">
       <p class="section-path" aria-hidden="true">~/resume</p>
       <h1 class="fs-2 section-title">Resume</h1>

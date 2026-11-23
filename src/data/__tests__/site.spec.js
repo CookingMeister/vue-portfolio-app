@@ -56,8 +56,10 @@ describe('site data', () => {
     expect(sample.sourcePlanned).toBe(true)
     expect(sample.closedSource).not.toBe(true)
     expect(sample.links).toEqual([])
-    expect(ide.status).toBe('In development')
-    expect(sample.status).toBe('In development')
+    expect(ide.status).toBe('v0.2 pre-release')
+    expect(ide.description).toContain('internal testing')
+    expect(sample.status).toBe('Internal demo')
+    expect(sample.description).toContain('internal demo')
   })
 
   it('only uses link types the card knows how to render', () => {

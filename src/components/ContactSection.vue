@@ -33,6 +33,7 @@
         <div class="contact__services">
           <h2 class="prompt-heading">
             <span aria-hidden="true">$ services --web</span>
+            <span class="prompt-heading__note" aria-hidden="true"># open for orders</span>
             <span class="visually-hidden">Website design and redesign</span>
           </h2>
           <p class="prose">

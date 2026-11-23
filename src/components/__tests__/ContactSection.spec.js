@@ -29,6 +29,17 @@ describe('ContactSection', () => {
     expect(wrapper.findAll('a.contact-card')).toHaveLength(socialLinks.length)
   })
 
+  it('announces the plain services heading, not the shell prompt or its comment', () => {
+    const wrapper = mount(ContactSection)
+    const heading = wrapper.find('.contact__services h2')
+
+    expect(heading.find('.visually-hidden').text()).toBe('Website design and redesign')
+    expect(heading.findAll('[aria-hidden="true"]').map((el) => el.text())).toEqual([
+      '$ services --web',
+      '# open for orders'
+    ])
+  })
+
   it('directs website enquiries to Sunbelt rather than personal social links', () => {
     const wrapper = mount(ContactSection)
     const services = wrapper.find('.contact__services')

@@ -79,10 +79,10 @@ export const projects = [
     id: 'plb-chat-ide',
     title: 'PL/B IDE Help Bot',
     description:
-      'A closed-source IDE help bot currently in development, built in PL/B ' +
-      'with SQLite for database storage.',
+      'A closed-source IDE help bot built in PL/B with SQLite for database storage. ' +
+      'Version 0.2 is a pre-release in internal testing.',
     tags: ['PL/B', 'SQLite'],
-    status: 'In development',
+    status: 'v0.2 pre-release',
     featured: true,
     closedSource: true,
     links: []
@@ -91,12 +91,13 @@ export const projects = [
     id: 'plb-chromadb-sample',
     title: 'PL/B ChromaDB Sample',
     description:
-      'A PL/B sample application in development that answers questions using HTML help files. ' +
+      'A PL/B sample application that answers questions using HTML help files. ' +
+      'An internal demo is available. ' +
       'Ollama runs Gemma 4 for chat, while embedding-gemma-2 converts the help content ' +
       'into vectors stored in ChromaDB for retrieval-augmented generation (RAG). ' +
       'Planned for release in the PL/B samples repository.',
     tags: ['PL/B', 'ChromaDB', 'Ollama', 'Gemma 4', 'embedding-gemma-2', 'RAG'],
-    status: 'In development',
+    status: 'Internal demo',
     featured: true,
     sourcePlanned: true,
     links: []

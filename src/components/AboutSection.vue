@@ -173,7 +173,7 @@ import { about, site } from '@/data/site.js'
     width: 0;
     white-space: nowrap;
     clip-path: inset(0);
-    animation: tagline-type 1.5s steps(63, end) forwards;
+    animation: tagline-type 0.8s steps(63, end) forwards;
   }
 }
 
@@ -209,8 +209,12 @@ import { about, site } from '@/data/site.js'
     margin-top: 1.5rem;
   }
 
+  /* The copy and the highlights share a row, so their first lines share a
+     baseline: "$ highlights --top" sits on the same line as the first line of
+     the bio instead of 7px above it. */
   .about__copy {
     grid-area: copy;
+    align-self: baseline;
   }
 
   .about__actions {
@@ -219,6 +223,7 @@ import { about, site } from '@/data/site.js'
 
   .about__highlights {
     grid-area: highlights;
+    align-self: baseline;
   }
 
   .about__highlight-list {

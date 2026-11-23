@@ -51,20 +51,22 @@
   /* The site is dark-only; tells the UA to render scrollbars and controls to match. */
   color-scheme: dark;
 
-  /* Brand palette - midnight navy ground, cyan accent, cream text. The ground is
-     kept flat in luminance so cream and cyan both clear AA at either end. */
+  /* Brand palette - midnight navy ground, teal accent, cream text. The ground is
+     kept flat in luminance so cream and teal both clear AA at either end. */
   --c-ground-deep: #0a1a2f;
   --c-ground-soft: #14375e;
   /* Halfway along the ground gradient, for anything that has to blend into it. */
   --c-ground-mid: color-mix(in srgb, var(--c-ground-deep), var(--c-ground-soft));
   --c-cream: antiquewhite;
-  --c-accent: #0dcaf0;
+  /* A teal phosphor, greener and less electric than Bootstrap's stock info cyan
+     (#0dcaf0) but just as bright: 9.0:1 on the page ground, 6.2:1 at the light end. */
+  --c-accent: #2ccfc3;
   /* Phosphor amber: the one warm colour. It marks state - hover, the current
-     page, the cursor - and labels terminal output. Cyan stays on headings,
+     page, the cursor - and labels terminal output. Teal stays on headings,
      prompts and buttons at rest. */
   --c-warm: #ffb347;
   /* The darker side of a keycap, under each face colour. */
-  --c-accent-edge: #0787a1;
+  --c-accent-edge: color-mix(in srgb, var(--c-accent), black 38%);
   --c-warm-edge: #b9741d;
   --c-plate-edge: rgba(0, 0, 0, 0.55);
   /* The header and status bar sit on a darker plate than the page ground. */
@@ -281,7 +283,7 @@ body {
 
 /*
  * Keycap button: a squared key with a hard edge beneath it that sinks when
- * pressed. Cyan at rest and amber on hover, like every other interactive
+ * pressed. Teal at rest and amber on hover, like every other interactive
  * element. `.keycap--alt` is the quieter second action.
  */
 .keycap {

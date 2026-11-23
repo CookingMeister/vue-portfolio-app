@@ -21,8 +21,10 @@
         </div>
       </div>
 
+      <!-- "Mise en place": a cook's station, prepped and laid out before service. -->
       <h2 class="prompt-heading">
-        <span aria-hidden="true">$ skills --list</span>
+        <span aria-hidden="true">$ ls mise-en-place/</span>
+        <span class="prompt-heading__note" aria-hidden="true"># everything in its place</span>
         <span class="visually-hidden">Skills</span>
       </h2>
 

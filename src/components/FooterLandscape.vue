@@ -13,7 +13,7 @@
     <defs>
       <linearGradient id="landscape-sun" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#ffd98a" />
-        <stop offset="0.55" stop-color="#ffb347" />
+        <stop offset="0.55" class="landscape__warm" />
         <stop offset="1" stop-color="#ff6f61" />
       </linearGradient>
       <radialGradient id="landscape-glow">
@@ -44,7 +44,7 @@
       :width="star.size"
       :height="star.size"
       :opacity="star.opacity"
-      fill="antiquewhite"
+      class="landscape__star"
     />
 
     <circle cx="600" cy="120" r="190" fill="url(#landscape-glow)" />
@@ -67,11 +67,11 @@
       :x="bar.x"
       :y="bar.y"
       :width="bar.width"
-      :fill="bar.fill"
+      :class="bar.warm ? 'landscape__warm' : 'landscape__coral'"
       :opacity="bar.opacity"
       height="1.8"
     />
-    <rect x="0" y="161" width="1200" height="1" fill="#0dcaf0" opacity="0.35" />
+    <rect x="0" y="161" width="1200" height="1" class="landscape__horizon" opacity="0.35" />
   </svg>
 </template>
 
@@ -125,7 +125,7 @@ const reflection = Array.from({ length: 6 }, (_, i) => {
     x: n(600 - width / 2),
     y: n(166 + i * 5.5),
     width: n(width),
-    fill: i < 3 ? '#ffb347' : '#ff7a59',
+    warm: i < 3,
     opacity: Number((0.6 - i * 0.07).toFixed(2))
   }
 })
@@ -136,5 +136,24 @@ const reflection = Array.from({ length: 6 }, (_, i) => {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+/* The drawing keeps its own dusk palette in the markup above. Only colours it
+   shares with the brand are set here, from the tokens, so they stay in step. */
+.landscape__star {
+  fill: var(--c-cream);
+}
+
+.landscape__horizon {
+  fill: var(--c-accent);
+}
+
+.landscape__warm {
+  fill: var(--c-warm);
+  stop-color: var(--c-warm);
+}
+
+.landscape__coral {
+  fill: #ff7a59;
 }
 </style>

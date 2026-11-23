@@ -31,3 +31,8 @@ coverage
 
 .vscode
 .env
+
+# Local agent handoff files (not shared)
+/AGENTS.md
+/CLAUDE.md
+/HANDOFF.md

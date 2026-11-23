@@ -6,13 +6,18 @@
       <div class="section-rule"></div>
 
       <div class="contact__content">
-        <p class="contact__intro mb-4">
+        <p class="prose mb-4">
           The best way to reach me is on LinkedIn. You can also find my code and projects on GitHub.
         </p>
 
         <ul class="list-unstyled d-flex flex-column gap-4 mb-0">
           <li v-for="link in socialLinks" :key="link.id">
-            <a class="contact-card" :href="link.url" target="_blank" rel="noopener noreferrer">
+            <a
+              class="contact-card plate"
+              :href="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <AppIcon :name="link.icon" size="2rem" class="contact-card__icon" />
               <span class="contact-card__text">
                 <span class="contact-card__name">{{ link.name }}</span>
@@ -30,7 +35,7 @@
             <span aria-hidden="true">$ services --web</span>
             <span class="visually-hidden">Website design and redesign</span>
           </h2>
-          <p>
+          <p class="prose">
             Need a new website or a redesign? Get in touch with
             <a :href="websiteServices.url" target="_blank" rel="noopener noreferrer">
               {{ websiteServices.name
@@ -60,12 +65,7 @@ import { socialLinks, websiteServices } from '@/data/site.js'
   align-items: center;
   gap: 1.25rem;
   padding: 1.5rem;
-  color: var(--c-cream);
   text-decoration: none;
-  background:
-    repeating-linear-gradient(rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px), var(--c-plate);
-  border: 1px solid rgba(255, 179, 71, 0.38);
-  border-radius: var(--radius-key);
   transition: border-color var(--dur-fast) var(--ease);
 }
 
@@ -99,20 +99,19 @@ import { socialLinks, websiteServices } from '@/data/site.js'
 }
 
 .contact-card__name {
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: var(--fs-md);
+  font-weight: 500;
 }
 
 .contact-card__handle {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   font-weight: 500;
   overflow-wrap: anywhere;
 }
 
 .contact-card__blurb {
-  font-size: 0.9rem;
-  line-height: 1.6;
+  font-size: var(--fs-sm);
   opacity: 0.85;
 }
 
@@ -129,14 +128,6 @@ import { socialLinks, websiteServices } from '@/data/site.js'
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: var(--border-hairline);
-}
-
-.contact__intro,
-.contact__services p {
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 1.75;
-  letter-spacing: 0.01em;
 }
 
 .contact__services p {

@@ -5,7 +5,11 @@
       <h1 class="fs-2 section-title">Portfolio</h1>
       <div class="section-rule"></div>
 
-      <h2 class="fs-5 portfolio__subhead">Featured work</h2>
+      <!-- Prompts are what is seen; the plain headings are what is announced. -->
+      <h2 class="prompt-heading portfolio__heading">
+        <span aria-hidden="true">$ ls featured/</span>
+        <span class="visually-hidden">Featured work</span>
+      </h2>
       <p class="portfolio__note">
         Professional projects and current PL/B development. Source availability is noted on each
         project.
@@ -27,7 +31,10 @@
         />
       </div>
 
-      <h2 class="fs-5 portfolio__subhead">Open source &amp; personal projects</h2>
+      <h2 class="prompt-heading portfolio__heading">
+        <span aria-hidden="true">$ ls open-source/</span>
+        <span class="visually-hidden">Open source &amp; personal projects</span>
+      </h2>
       <div class="row row-cols-1 row-cols-md-2 align-items-stretch g-4 pb-5 portfolio__grid">
         <WorkCard
           v-for="project in personal"
@@ -44,8 +51,10 @@
       </div>
 
       <section aria-labelledby="earlier-work-heading">
-        <p class="section-path" aria-hidden="true">~/portfolio/archive</p>
-        <h2 id="earlier-work-heading" class="fs-5 portfolio__subhead">Earlier work</h2>
+        <h2 id="earlier-work-heading" class="prompt-heading portfolio__heading">
+          <span aria-hidden="true">$ ls archive/</span>
+          <span class="visually-hidden">Earlier work</span>
+        </h2>
         <p class="portfolio__note">
           Smaller projects from when I was learning full-stack development.
         </p>
@@ -87,17 +96,15 @@ const earlier = projects.filter((project) => project.earlier)
 </script>
 
 <style scoped>
-.portfolio__subhead {
-  margin: 0;
-  color: var(--c-cream);
-  text-shadow: var(--text-shadow-title);
+/* Space below comes from the note or the grid, not the heading. */
+.portfolio__heading {
+  margin-bottom: 0;
 }
 
 .portfolio__note {
   margin: 0.4rem 0 0;
-  color: var(--c-cream);
   opacity: 0.85;
-  font-size: 0.95rem;
+  font-size: var(--fs-sm);
 }
 
 .portfolio__grid {
@@ -133,15 +140,13 @@ const earlier = projects.filter((project) => project.earlier)
 
 .earlier__title {
   margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--c-cream);
+  font-size: var(--fs-base);
+  font-weight: 500;
 }
 
 .earlier__desc {
   margin: 0.15rem 0 0;
-  font-size: 0.9rem;
-  color: var(--c-cream);
+  font-size: var(--fs-sm);
   opacity: 0.85;
 }
 
@@ -155,7 +160,7 @@ const earlier = projects.filter((project) => project.earlier)
   align-items: center;
   gap: 0.4rem;
   color: var(--c-cream);
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   text-decoration: none;
   transition: color var(--dur-base) var(--ease);
 }

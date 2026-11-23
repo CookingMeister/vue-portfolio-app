@@ -1,6 +1,6 @@
 <template>
   <article class="col">
-    <div class="work-card h-100" :class="{ 'work-card--media': image }">
+    <div class="work-card plate h-100" :class="{ 'work-card--media': image }">
       <!-- A screenshot when there is one, otherwise a slim banner. -->
       <img
         v-if="image"
@@ -72,9 +72,6 @@ defineProps({
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: var(--c-plate);
-  border: 1px solid rgba(255, 179, 71, 0.38);
-  border-radius: var(--radius-key);
 }
 
 .work-card__media {
@@ -131,9 +128,7 @@ defineProps({
 
 .work-card__desc {
   margin: 0;
-  color: var(--c-cream);
-  font-size: 0.9rem;
-  line-height: 1.45;
+  font-size: var(--fs-sm);
 }
 
 .work-card__tags {
@@ -158,7 +153,7 @@ defineProps({
   align-items: center;
   gap: 0.4rem;
   color: var(--c-cream);
-  font-size: 0.9rem;
+  font-size: var(--fs-sm);
   text-decoration: none;
   transition: color var(--dur-base) var(--ease);
 }
@@ -171,8 +166,7 @@ defineProps({
 
 .work-card__closed {
   align-items: center;
-  color: var(--c-cream);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   opacity: 0.75;
 }
 </style>

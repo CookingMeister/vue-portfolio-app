@@ -26,7 +26,7 @@ defineProps({
 .career {
   margin: 0;
   padding-left: 1.25rem;
-  border-left: 1px solid rgba(250, 235, 215, 0.25);
+  border-left: 1px solid var(--c-cream-muted);
 }
 
 .career__entry {
@@ -48,7 +48,8 @@ defineProps({
   content: '';
   background: var(--c-warm);
   border-radius: 50%;
-  box-shadow: 0 0 0 3px #10294a;
+  /* A ring in the page's own colour cuts the line around each dot. */
+  box-shadow: 0 0 0 3px var(--c-ground-mid);
 }
 
 /* The years before software: the same line, an open dot. */
@@ -60,22 +61,20 @@ defineProps({
 .career__when {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   font-weight: 500;
   opacity: 0.7;
 }
 
 .career__title {
   margin: 0.05rem 0;
-  font-size: 1rem;
+  font-size: var(--fs-base);
   font-weight: 500;
-  color: var(--c-cream);
 }
 
 .career__place {
   margin: 0;
-  font-size: 0.9rem;
-  font-weight: 300;
+  font-size: var(--fs-sm);
   opacity: 0.85;
 }
 </style>

@@ -111,14 +111,6 @@ onUnmounted(() => {
   justify-content: center;
 }
 
-/* On phones the nav drops to its own row under the brand. Tighter pills keep
-   all four links on that one row inside the page's 24px side margins. */
-@media (max-width: 575.98px) {
-  .site-header__inner .nav {
-    --bs-nav-link-padding-x: 0.625rem;
-  }
-}
-
 /* The glow strengthens once the page scrolls beneath the header. */
 .site-header--scrolled {
   box-shadow: 0 2px 22px color-mix(in srgb, var(--c-warm) 35%, transparent);
@@ -161,5 +153,38 @@ onUnmounted(() => {
 .site-header__brand:hover,
 .site-header__brand:focus-visible {
   color: var(--c-warm);
+}
+
+/* Below 768px the nav drops to its own row under the brand, which made the bar
+   129px tall. Trimmed padding, a slightly smaller logo and a tight row gap bring it
+   to 93px, the same as the single-row desktop bar, and hand about 36px of every
+   screen back to the page. The nav links stay 36px tall so they are easy to tap. */
+@media (max-width: 767.98px) {
+  .site-header {
+    padding: 10px 0;
+  }
+
+  .site-header__inner {
+    row-gap: 0.25rem;
+  }
+
+  .site-header__logo {
+    width: 2.9rem;
+    height: 2rem;
+  }
+
+  .site-header__inner .nav {
+    --bs-nav-link-padding-y: 0.375rem;
+  }
+}
+
+/* On phones the pills are tighter still, so all four links stay on that one row
+   inside the page's 24px side margins. The padding shrinks with the screen: the four
+   labels need about 223px and the page leaves (width - 48px), so this keeps roughly
+   17px of slack from 320px upward. It tops out at the 10px used on wider phones. */
+@media (max-width: 575.98px) {
+  .site-header__inner .nav {
+    --bs-nav-link-padding-x: clamp(0.25rem, calc((100vw - 288px) / 8), 0.625rem);
+  }
 }
 </style>

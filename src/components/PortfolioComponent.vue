@@ -1,5 +1,5 @@
 <template>
-  <section id="Work" class="section-panel">
+  <section id="work" class="section-panel">
     <div class="container px-4">
       <p class="section-path" aria-hidden="true">~/portfolio</p>
       <h1 class="fs-2 section-title">Portfolio</h1>
@@ -162,7 +162,7 @@ const earlier = projects.filter((project) => project.earlier)
   color: var(--c-cream);
   font-size: var(--fs-sm);
   text-decoration: none;
-  transition: color var(--dur-base) var(--ease);
+  transition: color var(--dur-fast) var(--ease);
 }
 
 .earlier__link:hover,

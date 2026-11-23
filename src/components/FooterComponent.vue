@@ -108,6 +108,12 @@ const currentYear = new Date().getFullYear()
   text-decoration: none;
 }
 
+/* The bar is flush with the bottom and right edges of the page, so the global
+   ring, drawn 6px outside the link, would be cut off there. Draw it inside. */
+.site-footer__link:focus-visible {
+  outline-offset: -3px;
+}
+
 /* On a phone the path tag goes first; the name and the links are what matter. */
 @media (max-width: 575.98px) {
   .site-footer__segment--path {

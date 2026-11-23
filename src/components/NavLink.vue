@@ -27,7 +27,7 @@ defineProps({
 <style scoped>
 .site-nav__link {
   color: var(--c-cream);
-  transition: color var(--dur-base) var(--ease);
+  transition: color var(--dur-fast) var(--ease);
 }
 
 .site-nav__link:hover,

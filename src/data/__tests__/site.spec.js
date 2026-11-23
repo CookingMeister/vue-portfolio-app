@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest'
-import { projects, socialLinks, skillCategories, resumeFile, websiteServices } from '../site.js'
+import {
+  about,
+  projects,
+  socialLinks,
+  skillCategories,
+  resumeFile,
+  websiteServices
+} from '../site.js'
 
 const allLinks = [
   websiteServices.url,
@@ -63,6 +70,13 @@ describe('site data', () => {
 
   it('keeps the resume path free of a version or date', () => {
     expect(resumeFile).not.toMatch(/\d/)
+  })
+
+  // AboutSection.vue types the tagline out with `steps(63)` and `width: 63ch`. A CSP
+  // that blocks inline styles means the length cannot be passed in from here, so if
+  // the tagline changes, update both numbers in that component's CSS and this one.
+  it('keeps the tagline at the length its typing animation is tuned for', () => {
+    expect([...about.subheading]).toHaveLength(63)
   })
 
   it('has no duplicate skills within a category', () => {

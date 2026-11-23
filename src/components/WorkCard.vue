@@ -155,7 +155,7 @@ defineProps({
   color: var(--c-cream);
   font-size: var(--fs-sm);
   text-decoration: none;
-  transition: color var(--dur-base) var(--ease);
+  transition: color var(--dur-fast) var(--ease);
 }
 
 .work-card__link:hover,

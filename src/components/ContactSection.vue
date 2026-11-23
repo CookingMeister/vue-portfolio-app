@@ -1,5 +1,5 @@
 <template>
-  <section id="Contact" class="section-panel">
+  <section id="contact" class="section-panel">
     <div class="container px-4">
       <p class="section-path" aria-hidden="true">~/contact</p>
       <h1 class="fs-2 section-title">Contact</h1>
@@ -144,7 +144,9 @@ import { socialLinks, websiteServices } from '@/data/site.js'
   color: var(--c-warm);
 }
 
-@media (max-width: 575px) {
+/* Pairs with Bootstrap's 576px `min-width` breakpoints; the .98 closes the gap at
+   fractional widths such as browser zoom. */
+@media (max-width: 575.98px) {
   .contact-card {
     gap: 0.85rem;
     padding: 1.1rem;

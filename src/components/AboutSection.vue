@@ -1,5 +1,5 @@
 <template>
-  <section id="About" class="section-panel about">
+  <section id="about" class="section-panel about">
     <div class="container px-4">
       <!-- Source order stays natural on phones; grid areas create the desktop layout. -->
       <div class="about__grid">
@@ -180,12 +180,6 @@ import { about, site } from '@/data/site.js'
 @keyframes tagline-type {
   to {
     width: 63ch;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .about__portrait {
-    animation: none;
   }
 }
 

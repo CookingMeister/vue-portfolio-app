@@ -115,7 +115,7 @@ onUnmounted(() => {
   margin-right: auto;
   color: var(--c-cream);
   text-decoration: none;
-  transition: color var(--dur-base) var(--ease);
+  transition: color var(--dur-fast) var(--ease);
 }
 
 .site-header__logo {

@@ -358,7 +358,7 @@ body {
 
 .social-link {
   color: var(--c-cream);
-  transition: color var(--dur-base) var(--ease);
+  transition: color var(--dur-fast) var(--ease);
 }
 
 .social-link:hover,

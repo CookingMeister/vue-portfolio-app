@@ -217,7 +217,7 @@ Use Full (strict) SSL mode so Cloudflare verifies the origin certificate.
 - Vite 8
 - Bootstrap 5 (only the grid, reboot, type, nav and a handful of utilities, compiled with
   Sass; see [`src/assets/bootstrap.scss`](src/assets/bootstrap.scss))
-- Roboto and IBM Plex Mono, self-hosted via `@fontsource-variable/roboto` and
+- IBM Plex Sans and IBM Plex Mono, self-hosted via `@fontsource-variable/ibm-plex-sans` and
   `@fontsource/ibm-plex-mono` (no font CDN)
 - Vitest 5 with jsdom for unit and integration testing
 - ESLint (flat config) + Prettier

@@ -21,7 +21,7 @@
     "resume": "node resume/build-resume.mjs"
   },
   "dependencies": {
-    "@fontsource-variable/roboto": "^5.3.0",
+    "@fontsource-variable/ibm-plex-sans": "^5.3.0",
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "bootstrap": "5.3.9",
     "vue": "^3.5.45",

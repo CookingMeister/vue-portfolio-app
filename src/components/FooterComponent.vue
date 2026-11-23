@@ -54,14 +54,15 @@ const currentYear = new Date().getFullYear()
   z-index: 1;
 }
 
-/* Dusk sky behind the SVG: navy overhead, warming to plum at the horizon.
+/* Dusk sky behind the SVG, warming to plum at the horizon. It starts clear, so
+   the page's own navy runs straight into it instead of meeting a darker band.
    The height follows the drawing's 6:1 shape, so wide screens show the whole
    sun; below the minimum the SVG crops its sides instead of shrinking.
    The dusk stops are illustration colours, exempt from the token rule. */
 .site-footer__scene {
   height: clamp(150px, 16.67vw, 280px);
   overflow: hidden;
-  background: linear-gradient(var(--c-ground-deep) 0%, #1a2f5a 55%, #3b2a57 100%);
+  background: linear-gradient(transparent 0%, #1a2f5a 55%, #3b2a57 100%);
 }
 
 .site-footer__status {

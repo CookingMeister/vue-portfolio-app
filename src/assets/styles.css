@@ -87,8 +87,9 @@
   --border-hairline: 1px solid var(--c-cream-faint);
   /* The stronger rule under each page title. */
   --border-soft: 1px solid var(--c-cream-soft);
-  /* The phosphor edge around every terminal plate. */
-  --border-plate: 1px solid color-mix(in srgb, var(--c-warm) 38%, transparent);
+  /* A quiet edge around every terminal plate. Cream, not amber, so that amber on
+     a card (a stat, a label, a hover) still reads as meaning something. */
+  --border-plate: 1px solid var(--c-cream-muted);
   /* Shared terminal-style corners for every rectangular surface and control. */
   --radius-key: 5px;
 
@@ -252,8 +253,8 @@ body {
   letter-spacing: 0.01em;
 }
 
-/* A terminal plate: the dark CRT surface behind cards and windows, with a
-   phosphor edge. The header lays the same scanlines over a full-width bar. */
+/* A terminal plate: the dark CRT surface behind cards and windows, with a quiet
+   edge. The header lays the same scanlines over a full-width bar. */
 .plate {
   color: var(--c-cream);
   background: var(--scanlines), var(--c-plate);

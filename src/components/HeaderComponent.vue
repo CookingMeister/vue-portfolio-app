@@ -179,10 +179,12 @@ onUnmounted(() => {
 }
 
 /* On phones the pills are tighter still, so all four links stay on that one row
-   inside the page's 24px side margins. */
+   inside the page's 24px side margins. The padding shrinks with the screen: the four
+   labels need about 223px and the page leaves (width - 48px), so this keeps roughly
+   17px of slack from 320px upward. It tops out at the 10px used on wider phones. */
 @media (max-width: 575.98px) {
   .site-header__inner .nav {
-    --bs-nav-link-padding-x: 0.625rem;
+    --bs-nav-link-padding-x: clamp(0.25rem, calc((100vw - 288px) / 8), 0.625rem);
   }
 }
 </style>

@@ -10,10 +10,7 @@
         <span aria-hidden="true">$ ls featured/</span>
         <span class="visually-hidden">Featured work</span>
       </h2>
-      <p class="portfolio__note">
-        Professional projects and current PL/B development. Source availability is noted on each
-        project.
-      </p>
+      <p class="portfolio__note">Client websites and PL/B development at Sunbelt.</p>
       <!-- One card per row: these carry the longest descriptions, and a
            screenshot beside the text needs the full width to stay short. -->
       <div class="row row-cols-1 g-4 pb-5 portfolio__grid">
@@ -108,9 +105,8 @@ const earlier = projects.filter((project) => project.earlier)
 }
 
 .portfolio__grid {
-  /* On the grid rather than the heading, so heading-only and heading-plus-note
-     groups get the same air. */
-  margin-top: 2rem;
+  /* Grid gutters already add space above the first card. */
+  margin-top: 0.5rem;
 }
 
 /* In an odd-sized group the lead card spans the row: it is the highlight, and

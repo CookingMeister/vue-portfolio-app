@@ -41,6 +41,16 @@ describe('site data', () => {
     }
   })
 
+  it('leads featured work with the Sunbelt site and the PL/B runtime work', () => {
+    const featured = projects.filter((project) => project.featured)
+
+    expect(featured.slice(0, 2).map((project) => project.id)).toEqual([
+      'sunbelt-website',
+      'plb-regex-engine'
+    ])
+    expect(featured[0].links.some((link) => link.type === 'site')).toBe(true)
+  })
+
   it('keeps the SQLite IDE help bot separate from the upcoming ChromaDB sample', () => {
     const ide = projects.find((project) => project.id === 'plb-chat-ide')
     const sample = projects.find((project) => project.id === 'plb-chromadb-sample')
@@ -57,9 +67,8 @@ describe('site data', () => {
     expect(sample.closedSource).not.toBe(true)
     expect(sample.links).toEqual([])
     expect(ide.status).toBe('v0.2 pre-release')
-    expect(ide.description).toContain('internal testing')
+    expect(ide.description).toContain('tested by colleagues')
     expect(sample.status).toBe('Internal demo')
-    expect(sample.description).toContain('internal demo')
   })
 
   it('only uses link types the card knows how to render', () => {

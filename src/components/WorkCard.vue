@@ -1,5 +1,5 @@
 <template>
-  <article class="col">
+  <article class="col work-card-column">
     <div class="work-card plate h-100" :class="{ 'work-card--media': image }">
       <!-- A screenshot when there is one, otherwise a slim banner. -->
       <img
@@ -67,6 +67,11 @@ defineProps({
 </script>
 
 <style scoped>
+/* The available column width, not the viewport, determines the media layout. */
+.work-card-column {
+  container-type: inline-size;
+}
+
 /* Static terminal plates: only the actual links respond to interaction. */
 .work-card {
   display: flex;
@@ -75,22 +80,24 @@ defineProps({
 }
 
 .work-card__media {
+  display: block;
+  flex-shrink: 0;
   width: 100%;
+  height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   object-position: top center;
 }
 
-/* Screenshot to a side column, so the card's height is set by its body. */
-@media (min-width: 576px) {
+/* Only wide cards have room for a screenshot beside the description. */
+@container (min-width: 36rem) {
   .work-card--media {
     flex-direction: row;
   }
 
-  .work-card--media .work-card__media {
+  .work-card__media {
     flex: 0 0 38%;
     max-width: 15rem;
-    height: auto;
     align-self: stretch;
     aspect-ratio: auto;
   }
@@ -111,6 +118,7 @@ defineProps({
 .work-card__body {
   display: flex;
   flex: 1;
+  min-width: 0;
   flex-direction: column;
   gap: 0.6rem;
   padding: 1.1rem 1.25rem 1.25rem;

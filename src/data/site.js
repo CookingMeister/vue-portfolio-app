@@ -76,31 +76,18 @@ export const linkLabels = { github: 'Source', demo: 'Live demo', site: 'Live sit
  */
 export const projects = [
   {
-    id: 'plb-chat-ide',
-    title: 'PL/B IDE Help Bot',
+    id: 'sunbelt-website',
+    title: 'Sunbelt Computer Software Website',
     description:
-      'A closed-source IDE help bot built in PL/B with SQLite for database storage. ' +
-      'Version 0.2 is a pre-release in internal testing.',
-    tags: ['PL/B', 'SQLite'],
-    status: 'v0.2 pre-release',
+      'A redesign of the website for Sunbelt Computer Software, the PL/B language development ' +
+      'and support company, covering its products, blog and support pages. I also maintain ' +
+      'the PHP forum, which I migrated from PHP 5.4 to PHP 8.',
+    tags: ['Web Design', 'Redesign', 'PHP 8', 'PL/B'],
+    image: '/img/sunbelt.webp',
+    alt: 'Sunbelt Computer Software home page with a blue header and sun logo',
     featured: true,
     closedSource: true,
-    links: []
-  },
-  {
-    id: 'plb-chromadb-sample',
-    title: 'PL/B ChromaDB Sample',
-    description:
-      'A PL/B sample application that answers questions using HTML help files. ' +
-      'An internal demo is available. ' +
-      'Ollama runs Gemma 4 for chat, while embedding-gemma-2 converts the help content ' +
-      'into vectors stored in ChromaDB for retrieval-augmented generation (RAG). ' +
-      'Planned for release in the PL/B samples repository.',
-    tags: ['PL/B', 'ChromaDB', 'Ollama', 'Gemma 4', 'embedding-gemma-2', 'RAG'],
-    status: 'Internal demo',
-    featured: true,
-    sourcePlanned: true,
-    links: []
+    links: [{ type: 'site', url: 'https://www.sunbelt-plb.net/' }]
   },
   {
     id: 'plb-regex-engine',
@@ -138,18 +125,30 @@ export const projects = [
     ]
   },
   {
-    id: 'sunbelt-website',
-    title: 'Sunbelt Computer Software Website',
+    id: 'plb-chat-ide',
+    title: 'PL/B IDE Help Bot',
     description:
-      'A redesign of the website for Sunbelt Computer Software, the PL/B language development ' +
-      'and support company, covering its products, blog and support pages. I also maintain ' +
-      'the PHP forum, which I migrated from PHP 5.4 to PHP 8.',
-    tags: ['Web Design', 'Redesign', 'PHP 8', 'PL/B'],
-    image: '/img/sunbelt.webp',
-    alt: 'Sunbelt Computer Software home page with a blue header and sun logo',
+      'An in-editor bot for looking up PL/B help without leaving the IDE. ' +
+      'Built in PL/B with SQLite for storage and currently being tested by colleagues.',
+    tags: ['PL/B', 'SQLite'],
+    status: 'v0.2 pre-release',
     featured: true,
     closedSource: true,
-    links: [{ type: 'site', url: 'https://www.sunbelt-plb.net/' }]
+    links: []
+  },
+  {
+    id: 'plb-chromadb-sample',
+    title: 'PL/B ChromaDB Sample',
+    description:
+      'Ask a question about PL/B and get an answer grounded in the HTML help files. ' +
+      'Ollama runs Gemma 4 for chat, while embedding-gemma-2 converts the help content ' +
+      'into vectors stored in ChromaDB for retrieval-augmented generation (RAG). ' +
+      'Planned for release in the PL/B samples repository.',
+    tags: ['PL/B', 'ChromaDB', 'Ollama', 'Gemma 4', 'embedding-gemma-2', 'RAG'],
+    status: 'Internal demo',
+    featured: true,
+    sourcePlanned: true,
+    links: []
   },
   {
     id: 'homelab-omni-proxmox',

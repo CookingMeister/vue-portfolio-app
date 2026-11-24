@@ -35,6 +35,17 @@ describe('ResumeSection', () => {
     )
   })
 
+  it('shows two accomplishments under the current Sunbelt role', () => {
+    const wrapper = mount(ResumeSection)
+    const [currentRole] = wrapper.findAll('.career__entry')
+    const accomplishments = currentRole.findAll('.career__accomplishments li')
+
+    expect(currentRole.text()).toContain('Sunbelt Computer Software')
+    expect(accomplishments).toHaveLength(2)
+    expect(accomplishments[0].text()).toContain('regular expression engine')
+    expect(accomplishments[1].text()).toContain('PHP 5.4 to PHP 8')
+  })
+
   it('announces plain headings, not the decorative shell prompts', () => {
     const wrapper = mount(ResumeSection)
     const headings = wrapper.findAll('h2').map((h2) => h2.find('.visually-hidden').text())
@@ -48,6 +59,17 @@ describe('ResumeSection', () => {
     for (const category of skillCategories) {
       expect(wrapper.text()).toContain(category.title)
     }
+  })
+
+  it('separates development tools from homelab skills', () => {
+    const wrapper = mount(ResumeSection)
+    const [development, homelab] = wrapper.findAll('.resume__skill-group')
+
+    expect(development.find('h3').text()).toBe('Development & tools')
+    expect(development.text()).toContain('IIS 10')
+    expect(development.text()).not.toContain('Proxmox VE')
+    expect(homelab.find('h3').text()).toBe('Homelab & networking')
+    expect(homelab.text()).toContain('Proxmox VE')
   })
 
   it('lists the current toolset, including recent work', () => {

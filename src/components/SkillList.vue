@@ -1,6 +1,6 @@
 <template>
   <li class="skill-row">
-    <h3 class="skill-row__label">{{ title }}</h3>
+    <h4 class="skill-row__label">{{ title }}</h4>
     <ul class="skill-row__chips list-unstyled">
       <li v-for="skill in skills" :key="skill" class="chip">{{ skill }}</li>
     </ul>

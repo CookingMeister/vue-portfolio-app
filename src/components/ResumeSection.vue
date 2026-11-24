@@ -28,14 +28,17 @@
         <span class="visually-hidden">Skills</span>
       </h2>
 
-      <ul class="skill-list list-unstyled">
-        <SkillList
-          v-for="category in skillCategories"
-          :key="category.id"
-          :title="category.title"
-          :skills="category.skills"
-        />
-      </ul>
+      <div v-for="group in skillGroups" :key="group.title" class="resume__skill-group">
+        <h3 class="resume__skill-title">{{ group.title }}</h3>
+        <ul class="skill-list list-unstyled">
+          <SkillList
+            v-for="category in group.categories"
+            :key="category.id"
+            :title="category.title"
+            :skills="category.skills"
+          />
+        </ul>
+      </div>
     </div>
   </section>
 </template>
@@ -45,7 +48,7 @@ import CareerLog from './CareerLog.vue'
 import DownloadLink from './DownloadLink.vue'
 import SkillList from './SkillList.vue'
 import TerminalCard from './TerminalCard.vue'
-import { career, skillCategories, whoami } from '@/data/site.js'
+import { career, skillGroups, whoami } from '@/data/site.js'
 </script>
 
 <style scoped>
@@ -66,6 +69,16 @@ import { career, skillCategories, whoami } from '@/data/site.js'
 
 .resume__download {
   margin-top: 1.5rem;
+}
+
+.resume__skill-group + .resume__skill-group {
+  margin-top: 2rem;
+}
+
+.resume__skill-title {
+  margin: 0 0 0.75rem;
+  font-size: var(--fs-md);
+  font-weight: 500;
 }
 
 .skill-list {

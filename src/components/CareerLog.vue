@@ -10,13 +10,18 @@
       <p class="career__when">{{ entry.when }}</p>
       <h3 class="career__title">{{ entry.title }}</h3>
       <p class="career__place">{{ entry.place }}</p>
+      <ul v-if="entry.accomplishments?.length" class="career__accomplishments">
+        <li v-for="accomplishment in entry.accomplishments" :key="accomplishment">
+          {{ accomplishment }}
+        </li>
+      </ul>
     </li>
   </ol>
 </template>
 
 <script setup>
 defineProps({
-  /** Rows of `{ when, title, place, kind }`; any kind but 'software' draws a hollow dot. */
+  /** Rows of `{ when, title, place, kind, accomplishments? }`. */
   entries: { type: Array, required: true }
 })
 </script>
@@ -76,5 +81,15 @@ defineProps({
   margin: 0;
   font-size: var(--fs-sm);
   opacity: 0.85;
+}
+
+.career__accomplishments {
+  margin: 0.5rem 0 0;
+  padding-inline-start: 1rem;
+  font-size: var(--fs-sm);
+}
+
+.career__accomplishments li + li {
+  margin-top: 0.25rem;
 }
 </style>

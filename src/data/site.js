@@ -25,20 +25,22 @@ export const websiteServices = {
 
 export const socialLinks = [
   {
+    id: 'linkedin',
+    name: 'LinkedIn',
+    action: 'Message me on LinkedIn',
+    handle: 'in/shawn-meister',
+    url: 'https://www.linkedin.com/in/shawn-meister/',
+    icon: 'linkedin',
+    blurb: 'Work history and professional inquiries.'
+  },
+  {
     id: 'github',
     name: 'GitHub',
+    action: 'Browse my code on GitHub',
     handle: '@CookingMeister',
     url: 'https://github.com/CookingMeister?tab=repositories',
     icon: 'github',
     blurb: 'Public projects, experiments and source code.'
-  },
-  {
-    id: 'linkedin',
-    name: 'LinkedIn',
-    handle: 'in/shawn-meister',
-    url: 'https://www.linkedin.com/in/shawn-meister/',
-    icon: 'linkedin',
-    blurb: 'Work history, and the best place to start a conversation.'
   }
 ]
 
@@ -275,7 +277,8 @@ export const skillCategories = [
   },
   {
     id: 'infrastructure',
-    title: 'Virtualization & Homelab',
+    title: 'Virtualization & Infrastructure',
+    homelab: true,
     skills: [
       'Proxmox VE + clusters',
       'TrueNAS CE',
@@ -293,6 +296,7 @@ export const skillCategories = [
   {
     id: 'networking',
     title: 'Networking',
+    homelab: true,
     skills: [
       'OPNsense firewall & routing',
       'Managed switches',
@@ -320,6 +324,17 @@ export const skillCategories = [
   }
 ]
 
+export const skillGroups = [
+  {
+    title: 'Development & tools',
+    categories: skillCategories.filter((category) => !category.homelab)
+  },
+  {
+    title: 'Homelab & networking',
+    categories: skillCategories.filter((category) => category.homelab)
+  }
+]
+
 /** Printed by the terminal card on the Resume page, as the output of `whoami`. */
 export const whoami = [
   { key: 'name', value: site.name },
@@ -340,7 +355,11 @@ export const career = [
     when: '2024-06 → now',
     title: 'Software Developer',
     place: 'Sunbelt Computer Software · Remote',
-    kind: 'software'
+    kind: 'software',
+    accomplishments: [
+      'Built a regular expression engine from scratch in C for the PL/B language runtime.',
+      'Migrated Sunbelt’s forum from PHP 5.4 to PHP 8.'
+    ]
   },
   {
     when: '2024',

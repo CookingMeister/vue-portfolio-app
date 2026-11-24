@@ -7,7 +7,7 @@
 
       <div class="contact__content">
         <p class="prose mb-4">
-          The best way to reach me is on LinkedIn. You can also find my code and projects on GitHub.
+          For questions about my work or new opportunities, LinkedIn is the best way to reach me.
         </p>
 
         <ul class="list-unstyled d-flex flex-column gap-4 mb-0">
@@ -20,7 +20,7 @@
             >
               <AppIcon :name="link.icon" size="2rem" class="contact-card__icon" />
               <span class="contact-card__text">
-                <span class="contact-card__name">{{ link.name }}</span>
+                <span class="contact-card__name">{{ link.action }}</span>
                 <span class="contact-card__handle">{{ link.handle }}</span>
                 <span class="contact-card__blurb">{{ link.blurb }}</span>
               </span>

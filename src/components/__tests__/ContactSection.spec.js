@@ -24,6 +24,13 @@ describe('ContactSection', () => {
     }
   })
 
+  it('puts LinkedIn first and labels each card by its action', () => {
+    const wrapper = mount(ContactSection)
+    const actions = wrapper.findAll('.contact-card__name').map((label) => label.text())
+
+    expect(actions).toEqual(['Message me on LinkedIn', 'Browse my code on GitHub'])
+  })
+
   it('renders one card per configured social link', () => {
     const wrapper = mount(ContactSection)
     expect(wrapper.findAll('a.contact-card')).toHaveLength(socialLinks.length)

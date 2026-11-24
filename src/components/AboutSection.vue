@@ -295,8 +295,12 @@ import { about, site } from '@/data/site.js'
       'portrait copy highlights';
   }
 
+  /* The prompt sits level with the name rather than the ~/about path above it;
+     the path line is about 24px (12px at 1.5 line height, plus its margin from
+     .section-path), and 8px more settles it against the name's cap height. */
   .about__highlights {
     align-self: start;
+    margin-top: 2rem;
   }
 }
 </style>

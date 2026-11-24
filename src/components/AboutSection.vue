@@ -12,6 +12,14 @@
               aria-hidden="true"
             ></span>
           </p>
+          <!-- The lede and the links sit in the intro, not after the bio, so phones
+               reach "See my work" without scrolling past the portrait and the story. -->
+          <p class="about__lede">{{ about.lede }}</p>
+
+          <div class="about__actions">
+            <RouterLink class="keycap" to="/portfolio">See my work</RouterLink>
+            <RouterLink class="keycap keycap--alt" to="/contact">Get in touch</RouterLink>
+          </div>
         </div>
 
         <div class="about__portrait">
@@ -31,11 +39,6 @@
           <p v-for="(paragraph, i) in about.paragraphs" :key="i" class="prose">
             {{ paragraph }}
           </p>
-
-          <div class="about__actions">
-            <RouterLink class="keycap" to="/portfolio">See my work</RouterLink>
-            <RouterLink class="keycap keycap--alt" to="/contact">Get in touch</RouterLink>
-          </div>
         </div>
 
         <aside class="about__highlights" aria-labelledby="highlights-heading">
@@ -124,17 +127,30 @@ import { about, site } from '@/data/site.js'
   font-size: var(--fs-sm);
 }
 
+/* The tagline's size at every width, so it reads under the tagline, never over it
+   (the tagline shrinks to 14px on phones). */
+.about__lede {
+  max-width: 40rem;
+  margin: 1rem auto 0;
+  font-size: clamp(var(--fs-sm), 2.5vw, var(--fs-base));
+  line-height: 1.6;
+}
+
 .about__copy p {
   margin-bottom: 1.15rem;
   text-align: left;
 }
 
+.about__copy p:last-child {
+  margin-bottom: 0;
+}
+
 .about__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .about__highlights {
@@ -238,6 +254,10 @@ import { about, site } from '@/data/site.js'
     grid-area: intro;
   }
 
+  .about__lede {
+    margin-left: 0;
+  }
+
   .about__portrait {
     grid-area: portrait;
     margin-top: 1.5rem;
@@ -262,6 +282,21 @@ import { about, site } from '@/data/site.js'
 
   .about__highlight-list {
     grid-template-columns: 1fr;
+  }
+}
+
+/* From 1400px the middle column fits the 63ch tagline, so the highlights can take
+   the right column from the top instead of waiting below the intro row. Narrower,
+   the tagline needs both columns. */
+@media (min-width: 1400px) {
+  .about__grid {
+    grid-template-areas:
+      'portrait intro highlights'
+      'portrait copy highlights';
+  }
+
+  .about__highlights {
+    align-self: start;
   }
 }
 </style>

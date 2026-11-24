@@ -47,17 +47,19 @@ export const socialLinks = [
 export const about = {
   heading: 'Shawn Meister',
   subheading: 'Full-Stack Developer / Former Executive Chef / Homelab Tinkerer',
+  // What I do today, said before the backstory so a skim gets it.
+  lede: 'At Sunbelt Computer Software I modernize long-running websites and build PL/B tools, down to the runtime in C.',
   paragraphs: [
     'I came to this career sideways. Before writing software I ran kitchens as an executive chef, and the habits came with me: work clean, respect the timing, and never send out something you would not happily eat yourself. That is where the name fullstackchef.dev comes from.',
 
-    'My day-to-day work spans PHP, JavaScript, C, C++, and PL/B, from the PL/B runtime to modernizing long-running client sites. I also handle website design and redesign as a secondary offering at Sunbelt.',
+    'Day to day that means PHP, JavaScript, C, C++, and PL/B. I also handle website design and redesign as a secondary offering at Sunbelt.',
 
     'Off the clock I run Proxmox VE, TrueNAS CE, OPNsense, and a Talos Linux Kubernetes cluster managed by GitOps. When I am not in a terminal I am outdoors somewhere in the Saint John River valley.'
   ],
   // Shown as kitchen order tickets; `station` is the line it was cooked on.
   highlights: [
     { value: '13 years', label: 'running professional kitchens', station: 'kitchen' },
-    { value: '4 sites', label: 'from the early to mid-1990s rebuilt', station: 'web' },
+    { value: '4 sites', label: 'rebuilt from the 1990s: 3 client, 1 Sunbelt', station: 'web' },
     { value: '15 methods', label: 'in a regex engine built in C', station: 'runtime' },
     { value: '3 nodes', label: 'in a Talos k8s cluster', station: 'homelab' }
   ],
@@ -81,7 +83,7 @@ export const projects = [
     id: 'sunbelt-website',
     title: 'Sunbelt Computer Software Website',
     description:
-      'A redesign of the website for Sunbelt Computer Software, the PL/B language development ' +
+      'A redesign of the early-1990s website for Sunbelt Computer Software, the PL/B language development ' +
       'and support company, covering its products, blog and support pages. I also maintain ' +
       'the PHP forum, which I migrated from PHP 5.4 to PHP 8.',
     tags: ['Web Design', 'Redesign', 'PHP 8', 'PL/B'],

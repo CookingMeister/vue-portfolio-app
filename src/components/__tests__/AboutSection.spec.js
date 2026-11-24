@@ -63,6 +63,16 @@ describe('AboutSection', () => {
     expect(tagline.find('.cursor-block').attributes('aria-hidden')).toBe('true')
   })
 
+  it('leads with the current role and the links, ahead of the portrait and bio', () => {
+    // On phones the grid stacks in source order, so this is what a visitor
+    // reaches before scrolling past the portrait and the chef story.
+    const intro = mountAbout().find('.about__intro')
+
+    expect(intro.find('.about__lede').text()).toBe(about.lede)
+    expect(intro.find('a[href="/portfolio"]').text()).toBe('See my work')
+    expect(about.paragraphs[0]).toMatch(/^I came to this career sideways/)
+  })
+
   it('links onward to work and contact', () => {
     const wrapper = mountAbout()
 

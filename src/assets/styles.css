@@ -65,9 +65,7 @@
      page, the cursor - and labels terminal output. Teal stays on headings,
      prompts and buttons at rest. */
   --c-warm: #ffb347;
-  /* The darker side of a keycap, under each face colour. */
-  --c-accent-edge: color-mix(in srgb, var(--c-accent), black 38%);
-  --c-warm-edge: #b9741d;
+  /* The darker side of a keycap, under its dark face. */
   --c-plate-edge: rgba(0, 0, 0, 0.55);
   /* The header and status bar sit on a darker plate than the page ground. */
   --c-plate: #071322;
@@ -290,30 +288,31 @@ body {
 }
 
 /*
- * Keycap button: a squared key with a hard edge beneath it that sinks when
- * pressed. Teal at rest and amber on hover, like every other interactive
- * element. `.keycap--alt` is the quieter second action.
+ * Keycap button: a small dark key with a hard edge beneath it that sinks when
+ * pressed. Dark keys with a teal label sit with the terminal text and tickets;
+ * a solid teal key outweighed the copy around it. The label and edge turn amber
+ * on hover, like every other interactive element. `.keycap--alt` is the quieter
+ * second action, with a cream label.
  */
 .keycap {
   display: inline-flex;
   gap: 0.5rem;
   align-items: center;
-  padding: 0.6rem 1.1rem;
+  padding: 0.55rem 0.9rem;
   font-family: var(--font-mono);
-  font-size: var(--fs-base);
+  font-size: var(--fs-sm);
   font-weight: 500;
   line-height: 1.2;
-  color: var(--c-plate);
+  color: var(--c-accent);
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  background: var(--c-accent);
-  border: 1px solid var(--c-accent);
+  background: var(--c-plate);
+  border: 1px solid color-mix(in srgb, var(--c-accent) 60%, transparent);
   border-radius: var(--radius-key);
-  box-shadow: 0 4px 0 var(--c-accent-edge);
+  box-shadow: 0 3px 0 var(--c-plate-edge);
   transition:
     color var(--dur-fast) var(--ease),
-    background-color var(--dur-fast) var(--ease),
     border-color var(--dur-fast) var(--ease),
     box-shadow var(--dur-fast) var(--ease),
     transform var(--dur-fast) var(--ease);
@@ -321,35 +320,19 @@ body {
 
 .keycap:hover,
 .keycap:focus-visible {
-  color: var(--c-plate);
-  background: var(--c-warm);
+  color: var(--c-warm);
   border-color: var(--c-warm);
-  box-shadow: 0 4px 0 var(--c-warm-edge);
 }
 
 /* The key travels the height of its edge, and the edge disappears. */
 .keycap:active {
-  box-shadow: 0 0 0 var(--c-warm-edge);
-  transform: translateY(4px);
+  box-shadow: 0 0 0 var(--c-plate-edge);
+  transform: translateY(3px);
 }
 
 .keycap--alt {
   color: var(--c-cream);
-  background: var(--c-plate);
   border-color: var(--c-cream-soft);
-  box-shadow: 0 4px 0 var(--c-plate-edge);
-}
-
-.keycap--alt:hover,
-.keycap--alt:focus-visible {
-  color: var(--c-warm);
-  background: var(--c-plate);
-  border-color: var(--c-warm);
-  box-shadow: 0 4px 0 var(--c-plate-edge);
-}
-
-.keycap--alt:active {
-  box-shadow: 0 0 0 var(--c-plate-edge);
 }
 
 /* A terminal's block cursor. `steps(1)` gives a hard blink, not a fade; under
